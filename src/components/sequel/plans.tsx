@@ -77,7 +77,7 @@ export function Plans() {
                   size="lg"
                   variant={featured ? "default" : "ghost"}
                   onClick={() => startCheckout(plan)}
-                  aria-label={`Buy ${plan.name} subscription`}
+                  aria-label={`Buy Subscription, ${plan.name} plan`}
                 >
                   Buy Subscription
                 </Button>
