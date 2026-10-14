@@ -17,8 +17,8 @@ function subscribe(onChange: () => void) {
   return () => window.removeEventListener("scroll", onChange)
 }
 
-// Transparent over the hero, pure black once you scroll. Logo left,
-// three links centre, one cream pill right.
+// Transparent over the hero, page background once you scroll. Logo left,
+// three links centre, primary pill right.
 export function Nav() {
   const scrolled = useSyncExternalStore(subscribe, () => window.scrollY > 24, () => false)
   return (
@@ -37,7 +37,7 @@ export function Nav() {
             <a
               key={href}
               href={href}
-              className="inline-flex h-11 items-center px-2 text-[15px] font-medium text-white/90 transition-opacity duration-300 hover:text-white"
+              className="inline-flex h-11 items-center px-2 text-[15px] font-medium text-ink/90 transition-opacity duration-300 hover:text-ink"
             >
               {label}
             </a>

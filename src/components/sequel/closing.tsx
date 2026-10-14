@@ -43,9 +43,9 @@ export function Closing() {
         <div className="mt-16 flex flex-col gap-4 text-body text-smoke sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 Iron Warriors. Demo website: no real payments or WhatsApp messages.</p>
           <nav aria-label="Footer" className="flex gap-6">
-            <a href="#plans" className="hover:text-white">Membership</a>
-            <a href="#reminders" className="hover:text-white">Reminders</a>
-            <a href="#faq" className="hover:text-white">Questions</a>
+            <a href="#plans" className="hover:text-ink">Membership</a>
+            <a href="#reminders" className="hover:text-ink">Reminders</a>
+            <a href="#faq" className="hover:text-ink">Questions</a>
           </nav>
         </div>
       </div>

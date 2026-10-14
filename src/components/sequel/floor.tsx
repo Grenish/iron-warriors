@@ -59,12 +59,12 @@ export function Floor() {
               )}
               <span
                 aria-hidden
-                className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-void via-void/75 to-transparent"
+                className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-photo via-photo/75 to-transparent"
               />
-              <Badge className="absolute top-4 right-4">{tag}</Badge>
+              <Badge className="absolute top-4 right-4 bg-black/35 text-white">{tag}</Badge>
               <div className="relative p-6 sm:p-8">
                 <h3 className="text-[21px] font-medium tracking-[-0.02em] text-white">{title}</h3>
-                <p className="mt-2 max-w-md text-body text-mute">{text}</p>
+                <p className="mt-2 max-w-md text-body text-photo-mute">{text}</p>
               </div>
             </li>
           ))}

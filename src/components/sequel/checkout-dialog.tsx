@@ -129,7 +129,7 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
         {step === "success" ? (
           <div className="flex flex-col gap-5">
             <DialogHeader className="items-center text-center">
-              <div className="glass flex size-14 items-center justify-center rounded-full text-white">
+              <div className="glass flex size-14 items-center justify-center rounded-full text-ink">
                 <CheckCircle2 className="size-6" strokeWidth={1.5} />
               </div>
               <DialogTitle>
@@ -143,21 +143,21 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
 
             {whatsapp ? (
               <div className="rounded-card bg-void p-5">
-                <p className="flex items-start gap-2 text-body font-medium text-white">
-                  <MessageCircle className="mt-0.5 size-4 shrink-0 text-white" />
+                <p className="flex items-start gap-2 text-body font-medium text-ink">
+                  <MessageCircle className="mt-0.5 size-4 shrink-0 text-ink" />
                   A WhatsApp reminder would be sent to {formatPhone(phone)}
                 </p>
                 <ul className="mt-4 divide-y divide-graphite border-t border-graphite text-body">
                   {schedule.map((reminder) => (
                     <li key={reminder.label} className="flex justify-between gap-4 py-2.5">
                       <span className="text-mute">{reminder.label}</span>
-                      <span className="font-medium whitespace-nowrap text-white">{reminder.when}</span>
+                      <span className="font-medium whitespace-nowrap text-ink">{reminder.when}</span>
                     </li>
                   ))}
                   {workoutNudges && (
                     <li className="flex justify-between gap-4 py-2.5">
                       <span className="text-mute">Workout reminders</span>
-                      <span className="font-medium whitespace-nowrap text-white">Mon, Wed, Fri</span>
+                      <span className="font-medium whitespace-nowrap text-ink">Mon, Wed, Fri</span>
                     </li>
                   )}
                 </ul>
@@ -233,7 +233,7 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
               <div className="flex items-start justify-between gap-4">
                 <Label htmlFor="whatsapp-reminders" className="flex-col items-start gap-1">
                   <span className="flex items-center gap-2">
-                    <BellRing className="size-4 text-white" />
+                    <BellRing className="size-4 text-ink" />
                     WhatsApp reminders
                   </span>
                   <span className="text-body font-normal text-mute">
@@ -268,7 +268,7 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
             <div className="flex items-start justify-between gap-4 rounded-card bg-void p-5">
               <Label htmlFor="pt-addon" className="flex-col items-start gap-1">
                 <span className="flex items-center gap-2">
-                  <Dumbbell className="size-4 text-white" />
+                  <Dumbbell className="size-4 text-ink" />
                   Add {personalTrainingAddOn.name}
                 </span>
                 <span className="text-body font-normal text-mute">
@@ -308,8 +308,8 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
               </div>
               <Separator className="my-1" />
               <div className="flex items-baseline justify-between">
-                <span className="font-medium text-white">Total</span>
-                <span className="display text-sub text-white">
+                <span className="font-medium text-ink">Total</span>
+                <span className="display text-sub text-ink">
                   {formatINR(total)}
                   <span className="ml-1.5 text-body font-normal tracking-normal text-smoke">
                     incl. GST

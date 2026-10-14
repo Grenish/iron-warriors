@@ -9,8 +9,8 @@ const badgeVariants = cva(
     variants: {
       variant: {
         // Sequel frosted glass badge.
-        default: "glass text-white",
-        outline: "border border-graphite text-white",
+        default: "glass text-ink",
+        outline: "border border-graphite text-ink",
       },
     },
     defaultVariants: {

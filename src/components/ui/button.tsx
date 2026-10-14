@@ -7,13 +7,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Sequel primary: the lamp cream filled pill, the only filled button.
-        default: "bg-cream text-void shadow-lamp hover:bg-cream-dim",
+        // Sequel primary: near-black pill on paper, lamp cream pill on charcoal, the only filled button.
+        default: "bg-primary text-primary-foreground shadow-lamp hover:bg-primary-hover",
         // Sequel secondary: ghost outline pill on the void.
-        ghost: "border-white/80 bg-transparent text-white hover:border-white hover:bg-white/5",
-        outline: "border-white/80 bg-transparent text-white hover:border-white hover:bg-white/5",
-        quiet: "text-white hover:bg-white/5",
-        link: "text-white underline underline-offset-4",
+        ghost: "border-ink/80 bg-transparent text-ink hover:border-ink hover:bg-ink/5",
+        outline: "border-ink/80 bg-transparent text-ink hover:border-ink hover:bg-ink/5",
+        quiet: "text-ink hover:bg-ink/5",
+        link: "text-ink underline underline-offset-4",
       },
       size: {
         default: "h-11 gap-2 px-6",

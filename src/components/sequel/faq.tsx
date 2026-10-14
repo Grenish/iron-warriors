@@ -38,7 +38,7 @@ export function Faq() {
                     aria-expanded={isOpen}
                     aria-controls={`faq-a-${i}`}
                     onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex min-h-18 w-full cursor-pointer items-center justify-between gap-6 py-6 text-left text-body-lg font-light tracking-[-0.01em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream"
+                    className="flex min-h-18 w-full cursor-pointer items-center justify-between gap-6 py-6 text-left text-body-lg font-light tracking-[-0.01em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
                   >
                     {q}
                     <span aria-hidden className="glass flex size-10 shrink-0 items-center justify-center rounded-full">
