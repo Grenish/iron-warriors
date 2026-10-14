@@ -7,7 +7,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Sequel primary: near-black pill on paper, lamp cream pill on charcoal, the only filled button.
+        // Sequel primary: deep slate pill on light, sand pill on dark, the only filled button.
         default: "border-transparent bg-primary text-primary-foreground shadow-lamp hover:bg-primary-hover",
         // Sequel secondary: ghost outline pill on the void.
         ghost: "border-ink/80 bg-transparent text-ink hover:border-ink hover:bg-ink/5",

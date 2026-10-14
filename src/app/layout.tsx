@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next"
 import { Geist, Instrument_Serif } from "next/font/google"
 import { ThemeProvider } from "@/components/theme/theme-provider"
-import { PaletteSwitcher } from "@/components/theme/palette-switcher"
 import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
@@ -43,13 +42,10 @@ export const metadata: Metadata = {
 // Mobile browser bar follows the active scheme.
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5f5f0" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1a1a" },
+    { media: "(prefers-color-scheme: light)", color: "#eef0f3" },
+    { media: "(prefers-color-scheme: dark)", color: "#1f2329" },
   ],
 }
-
-// Preview palette, applied before paint so a saved choice never flashes.
-const paletteScript = `try{var p=localStorage.getItem("sequel-palette");if(p)document.documentElement.dataset.palette=p}catch(e){}`
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -58,13 +54,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
       className={`${geist.variable} ${serif.variable} h-full scroll-smooth antialiased`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: paletteScript }} />
-      </head>
       <body className="flex min-h-full flex-col bg-void">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
-          <PaletteSwitcher />
           <Toaster position="top-center" />
         </ThemeProvider>
       </body>
