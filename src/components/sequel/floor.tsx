@@ -15,7 +15,7 @@ const features = [
 // Photo per card, keyed by title so card order can change freely.
 const photos: Record<string, { src: string; alt: string }> = {
   "Group classes": { src: "/images/feature-1.webp", alt: "Dark studio with exercise mats and kettlebells, two figures moving in shadow" },
-  "Certified trainers": { src: "/images/feature-2.webp", alt: "Coach's chalked hands adjusting a lifter's grip on a barbell" },
+  "Certified trainers": { src: "/images/feature-2.webp", alt: "Coach standing in silhouette beside a loaded power rack" },
   "Pro equipment": { src: "/images/feature-3.webp", alt: "Loaded Olympic barbell on a wooden platform with power racks and turf behind" },
   "Progress tracking": { src: "/images/feature-4.webp", alt: "Tape measure and notebook on a leather gym bench under a desk lamp" },
   "Open 7 days": { src: "/images/feature-5.webp", alt: "Empty gym at night with city lights through floor-to-ceiling windows" },
