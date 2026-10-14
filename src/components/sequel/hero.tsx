@@ -1,30 +1,24 @@
-import Image from "next/image"
 import { ArrowDown } from "lucide-react"
 
 import { buttonVariants } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
 
-// Full viewport black still. The headline is the visual, anchored bottom
-// left, with a round glass control anchored bottom right.
+const facts = [
+  ["5 AM", "Doors open daily"],
+  ["₹1,499", "Monthly, incl. GST"],
+  ["2 reminders", "Before every renewal"],
+]
+
+// Typographic hero on the page background. The headline is the visual and
+// the largest paint; a hairline fact row and a round glass control anchor
+// the bottom so the space reads as composed, not empty.
 export function Hero() {
   return (
-    <section id="top" aria-labelledby="hero-title" className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-void">
-      <Image
-        src="/images/hero.webp"
-        alt="Dimly lit strength floor with power racks and loaded barbells under warm pendant lights"
-        fill
-        priority
-        sizes="100vw"
-        className="-z-20 object-cover"
-      />
-      {/* Readability scrims: darken the bottom and the left where the copy sits. */}
-      <span aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-void via-void/70 to-void/20" />
-      <span aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-void/80 via-void/30 to-transparent" />
-      <div className="mx-auto flex w-full max-w-page flex-1 flex-col justify-end px-5 pt-32 pb-14 sm:px-8 sm:pb-20">
-        <p className="label text-mute">Koramangala, Bengaluru</p>
+    <section id="top" aria-labelledby="hero-title" className="relative flex min-h-[100svh] flex-col bg-void">
+      <div className="mx-auto flex w-full max-w-page flex-1 flex-col justify-end px-5 pt-32 pb-12 sm:px-8 sm:pb-16">
+        <p className="label text-smoke">Koramangala, Bengaluru</p>
         <h1
           id="hero-title"
-          className="mt-6 text-[64px] leading-[0.98] font-medium tracking-[-0.05em] text-balance sm:text-[104px] lg:text-display"
+          className="display mt-6 text-[60px] leading-[0.98] text-ink sm:text-[104px] lg:text-display"
         >
           Iron Warriors.
           <br />
@@ -47,14 +41,20 @@ export function Hero() {
           </div>
           <a
             href="#floor"
-            className={cn(
-              "glass group hidden size-32 shrink-0 flex-col items-center justify-center gap-2 rounded-full text-white transition-colors duration-300 ease-film hover:bg-white/15 lg:flex"
-            )}
+            className="glass hidden size-32 shrink-0 flex-col items-center justify-center gap-2 rounded-full text-ink transition-colors duration-300 ease-film hover:bg-ink/10 lg:flex"
           >
             <ArrowDown className="size-4" strokeWidth={1.5} />
             <span className="text-[13px] tracking-[0.03em] uppercase">See the gym</span>
           </a>
         </div>
+        <dl className="mt-14 grid grid-cols-1 border-t border-graphite sm:mt-20 sm:grid-cols-3">
+          {facts.map(([value, label]) => (
+            <div key={label} className="flex items-baseline justify-between gap-4 border-b border-graphite py-5 sm:flex-col sm:items-start sm:border-b-0 sm:py-6 sm:pr-8">
+              <dt className="label text-smoke sm:mt-2">{label}</dt>
+              <dd className="display order-first text-[28px] leading-none text-ink sm:text-sub">{value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   )
