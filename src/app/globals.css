@@ -1,26 +1,195 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
+/* Class based dark variant so OS dark mode never restyles this page. Dark
+   bands are styled explicitly, not through a theme switch. */
+@custom-variant dark (&:is(.dark *));
+
+/* Iron Warriors design system. A disciplined, institutional look:
+   near-black bands (ink) alternate with cool off-white bands (bone). Depth
+   comes from surface tone steps (ink, ink-2, ink-3) and 1px hairlines, not
+   drop shadows. One deep crimson accent is reserved for primary actions and
+   small labels. All informational text pairs below meet WCAG AA:
+     graphite #3A3A3F on bone      10.2:1
+     pewter   #5A5A60 on bone       6.2:1
+     crimson  #B91C1C on white      6.5:1 (white on crimson is the same)
+     mist     #B8B8BD on ink-3      8.4:1
+     fog      #9A9AA1 on ink-3      5.9:1
+     ember    #E5484D on ink        5.0:1 (accent text on ink and ink-2 only) */
+
+/* Layout tokens that are not Tailwind theme namespaces. The spacing scale is
+   left to Tailwind so p-4, gap-4 and friends keep their usual values. */
 :root {
+  --page-max-width: 1200px;
+  --card-padding: 32px;
+
+  /* shadcn semantic tokens mapped onto the Iron Warriors palette */
+  --radius: 0.5rem;
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0b0b0c;
+  --card: #ffffff;
+  --card-foreground: #0b0b0c;
+  --popover: #ffffff;
+  --popover-foreground: #0b0b0c;
+  --primary: #b91c1c;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f4f4;
+  --secondary-foreground: #0b0b0c;
+  --muted: #f1f4f4;
+  --muted-foreground: #5a5a60;
+  --accent: #f1f4f4;
+  --accent-foreground: #0b0b0c;
+  --destructive: #b91c1c;
+  --border: #dfe3e3;
+  --input: #c4c9c9;
+  --ring: #b91c1c;
+}
+
+@theme {
+  /* Surfaces */
+  --color-ink: #0b0b0c;
+  --color-ink-2: #161617;
+  --color-ink-3: #1e1f20;
+  --color-bone: #f1f4f4;
+  --color-line: #dfe3e3;
+  --color-line-strong: #c4c9c9;
+  --color-line-dark: #333333;
+
+  /* Text */
+  --color-graphite: #3a3a3f;
+  --color-pewter: #5a5a60;
+  --color-mist: #b8b8bd;
+  --color-fog: #9a9aa1;
+
+  /* Accent: deep crimson, used sparingly */
+  --color-crimson: #b91c1c;
+  --color-crimson-deep: #991b1b;
+  --color-ember: #e5484d;
+
+  /* Type scale */
+  --text-caption: 12px;
+  --text-caption--line-height: 16px;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 22px;
+  --text-body: 16px;
+  --text-body--line-height: 26px;
+  --text-subheading: 18px;
+  --text-subheading--line-height: 28px;
+  --text-heading-sm: 20px;
+  --text-heading-sm--line-height: 28px;
+  --text-heading: 24px;
+  --text-heading--line-height: 30px;
+  --text-heading-lg: 48px;
+  --text-heading-lg--line-height: 50px;
+
+  /* Radii: controls are pills, cards 12px, inputs 8px. */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 14px;
+  --radius-3xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows: the page is flat. Only floating layers (dialog, toasts) get
+     a single soft shadow. */
+  --shadow-subtle: 0 1px 2px rgba(11, 11, 12, 0.04);
+  --shadow-float: 0 2px 8px rgba(11, 11, 12, 0.08), 0 24px 48px -24px rgba(11, 11, 12, 0.35);
+
+  /* Layout */
+  --container-page: 1200px;
 }
 
 @theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font-archivo), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Display headings: Archivo, semi condensed, bold and tightly tracked so
+   large sizes read as one solid block. */
+@utility headline {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-stretch: 88%;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+/* Measured, positively tracked small caps for labels and tags. */
+@utility label-caps {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Small uppercase section label with a short crimson rule. On light bands
+   the label is crimson, on dark bands use eyebrow-dark. */
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-crimson);
+  &::before {
+    content: "";
+    width: 24px;
+    height: 2px;
+    background: currentColor;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility eyebrow-dark {
+  color: var(--color-ember);
+}
+
+/* Tabular, slightly tracked numerals for prices and stats. */
+@utility figure {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-stretch: 88%;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply bg-ink font-sans text-ink;
+    font-feature-settings: "cv11" on, "ss01" on;
+  }
+  body {
+    @apply bg-white text-body text-ink;
+  }
+  ::selection {
+    background: var(--color-crimson);
+    color: #ffffff;
+  }
 }
