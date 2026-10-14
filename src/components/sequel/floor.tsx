@@ -59,7 +59,7 @@ export function Floor() {
               )}
               <span
                 aria-hidden
-                className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black via-black/75 to-transparent"
+                className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-void via-void/75 to-transparent"
               />
               <Badge className="absolute top-4 right-4">{tag}</Badge>
               <div className="relative p-6 sm:p-8">

@@ -18,8 +18,8 @@ export function Hero() {
         className="-z-20 object-cover"
       />
       {/* Readability scrims: darken the bottom and the left where the copy sits. */}
-      <span aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-black/70 to-black/20" />
-      <span aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
+      <span aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-void via-void/70 to-void/20" />
+      <span aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-void/80 via-void/30 to-transparent" />
       <div className="mx-auto flex w-full max-w-page flex-1 flex-col justify-end px-5 pt-32 pb-14 sm:px-8 sm:pb-20">
         <p className="label text-mute">Koramangala, Bengaluru</p>
         <h1
