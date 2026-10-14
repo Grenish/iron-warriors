@@ -8,7 +8,7 @@ import {
   ExternalLink,
   Mic,
   Paperclip,
-  Phone,
+  Phone as PhoneIcon,
   Smile,
   Video,
 } from "lucide-react"
@@ -90,7 +90,7 @@ function Bubble({
   )
 }
 
-export function WhatsAppMock() {
+export function Phone() {
   const reduced = useSyncExternalStore(
     subscribeMotion,
     () => window.matchMedia("(prefers-reduced-motion: reduce)").matches,
@@ -143,10 +143,10 @@ export function WhatsAppMock() {
   const view = reduced ? complete : state
 
   return (
-    <figure ref={ref} className="mx-auto w-full max-w-[340px]">
+    <div ref={ref} className="mx-auto w-full max-w-[320px]">
       <div
         aria-hidden
-        className="flex aspect-[9/18.5] w-full flex-col overflow-hidden rounded-[40px] border border-[#333] bg-[#0b141a] p-[6px]"
+        className="flex aspect-[9/18.5] w-full flex-col overflow-hidden rounded-[44px] bg-[#1a1a1a] p-[7px] ring-1 ring-graphite"
       >
         <div className="flex h-full flex-col overflow-hidden rounded-[34px]">
           {/* Status bar */}
@@ -179,7 +179,7 @@ export function WhatsAppMock() {
               </p>
             </div>
             <Video className="size-5 shrink-0" />
-            <Phone className="ml-3 size-[18px] shrink-0" />
+            <PhoneIcon className="ml-3 size-[18px] shrink-0" />
           </div>
 
           {/* Chat body */}
@@ -244,13 +244,10 @@ export function WhatsAppMock() {
           </div>
         </div>
       </div>
-      <figcaption className="mt-4 text-center text-caption text-fog">
-        <span className="sr-only">
-          Example WhatsApp chat from Iron Warriors: a payment confirmation, a workout reminder, a
-          renewal reminder with a Renew now button, and a renewal payment confirmation.{" "}
-        </span>
-        Preview only. This demo does not send WhatsApp messages.
-      </figcaption>
-    </figure>
+      <p className="sr-only">
+        Example WhatsApp chat from Iron Warriors: a payment confirmation, a workout reminder, a
+        renewal reminder with a Renew now button, and a renewal payment confirmation.
+      </p>
+    </div>
   )
 }

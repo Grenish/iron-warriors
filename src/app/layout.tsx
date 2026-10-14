@@ -3,17 +3,18 @@ import { Geist, Instrument_Serif } from "next/font/google"
 import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
-// Geist for body copy and UI.
+// Geist stands in for VisueltPro: body, labels and hairline display type.
 const geist = Geist({
   variable: "--font-geist",
   subsets: ["latin"],
+  weight: ["300", "400", "500"],
   display: "swap",
   preload: true,
 })
 
-// Instrument Serif italic for the one accent word in each headline.
+// Instrument Serif italic stands in for Bradford: the one payoff word.
 const serif = Instrument_Serif({
-  variable: "--font-serif",
+  variable: "--font-instrument",
   subsets: ["latin"],
   weight: "400",
   style: "italic",
@@ -43,7 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en-IN"
       className={`${geist.variable} ${serif.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-black">
+      <body className="flex min-h-full flex-col bg-void">
         {children}
         <Toaster theme="dark" position="top-center" />
       </body>

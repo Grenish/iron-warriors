@@ -66,13 +66,13 @@ function buildReminderSchedule(months: number): Reminder[] {
   ]
 }
 
-type SubscribeDialogProps = {
+type CheckoutDialogProps = {
   plan: Plan | null
   open: boolean
   onOpenChange: (open: boolean) => void
 }
 
-export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogProps) {
+export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps) {
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
   const [whatsapp, setWhatsapp] = useState(true)
@@ -129,8 +129,8 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
         {step === "success" ? (
           <div className="flex flex-col gap-5">
             <DialogHeader className="items-center text-center">
-              <div className="flex size-14 items-center justify-center rounded-xl bg-ink text-white">
-                <CheckCircle2 className="size-7 text-paper" />
+              <div className="glass flex size-14 items-center justify-center rounded-full text-white">
+                <CheckCircle2 className="size-6" strokeWidth={1.5} />
               </div>
               <DialogTitle>
                 Demo: subscription confirmed
@@ -142,38 +142,38 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
             </DialogHeader>
 
             {whatsapp ? (
-              <div className="rounded-lg border border-line bg-ink-3 p-5">
-                <p className="flex items-start gap-2 text-body-sm font-semibold text-paper">
-                  <MessageCircle className="mt-0.5 size-4 shrink-0 text-paper" />
+              <div className="rounded-card bg-void p-5">
+                <p className="flex items-start gap-2 text-body font-medium text-white">
+                  <MessageCircle className="mt-0.5 size-4 shrink-0 text-white" />
                   A WhatsApp reminder would be sent to {formatPhone(phone)}
                 </p>
-                <ul className="mt-4 divide-y divide-line border-t border-line text-body-sm">
+                <ul className="mt-4 divide-y divide-graphite border-t border-graphite text-body">
                   {schedule.map((reminder) => (
                     <li key={reminder.label} className="flex justify-between gap-4 py-2.5">
-                      <span className="text-graphite">{reminder.label}</span>
-                      <span className="font-semibold whitespace-nowrap text-paper">{reminder.when}</span>
+                      <span className="text-mute">{reminder.label}</span>
+                      <span className="font-medium whitespace-nowrap text-white">{reminder.when}</span>
                     </li>
                   ))}
                   {workoutNudges && (
                     <li className="flex justify-between gap-4 py-2.5">
-                      <span className="text-graphite">Workout reminders</span>
-                      <span className="font-semibold whitespace-nowrap text-paper">Mon, Wed, Fri</span>
+                      <span className="text-mute">Workout reminders</span>
+                      <span className="font-medium whitespace-nowrap text-white">Mon, Wed, Fri</span>
                     </li>
                   )}
                 </ul>
               </div>
             ) : (
-              <p className="rounded-lg border border-line bg-ink-3 p-5 text-body-sm text-graphite">
+              <p className="rounded-card bg-void p-5 text-body text-mute">
                 WhatsApp reminders are turned off. You can switch them on any time at
                 the front desk.
               </p>
             )}
 
-            <p className="text-center text-body-sm text-pewter">
+            <p className="text-center text-body text-smoke">
               Demo only: no payment was charged and no WhatsApp message was sent.
             </p>
 
-            <Button size="lg" variant="dark" onClick={() => onOpenChange(false)}>
+            <Button size="lg" variant="ghost" onClick={() => onOpenChange(false)}>
               Done
             </Button>
           </div>
@@ -181,7 +181,7 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
           <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
             <DialogHeader>
               <div className="flex flex-wrap items-center gap-3 pr-8">
-                <p className="eyebrow">Demo checkout</p>
+                <p className="label text-smoke">Demo checkout</p>
                 {plan.popular && <Badge>Most Popular</Badge>}
               </div>
               <DialogTitle>
@@ -203,13 +203,13 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
                   onChange={(e) => setName(e.target.value)}
                   aria-invalid={Boolean(errors.name)}
                 />
-                {errors.name && <p className="text-body-sm text-destructive">{errors.name}</p>}
+                {errors.name && <p className="text-body text-destructive">{errors.name}</p>}
               </div>
 
               <div className="grid gap-2">
                 <Label htmlFor="member-phone">WhatsApp number</Label>
                 <div className="flex">
-                  <span className="inline-flex h-11 items-center rounded-l-lg border border-r-0 border-input bg-ink-3 px-4 text-body font-medium text-graphite">
+                  <span className="inline-flex h-12 items-center border-b border-graphite pr-3 text-body text-mute">
                     +91
                   </span>
                   <Input
@@ -222,21 +222,21 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
                     value={phone}
                     onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
                     aria-invalid={Boolean(errors.phone)}
-                    className="rounded-l-none"
+                    
                   />
                 </div>
-                {errors.phone && <p className="text-body-sm text-destructive">{errors.phone}</p>}
+                {errors.phone && <p className="text-body text-destructive">{errors.phone}</p>}
               </div>
             </div>
 
-            <div className="grid gap-4 rounded-lg border border-line bg-ink-3 p-5">
+            <div className="grid gap-4 rounded-card bg-void p-5">
               <div className="flex items-start justify-between gap-4">
                 <Label htmlFor="whatsapp-reminders" className="flex-col items-start gap-1">
                   <span className="flex items-center gap-2">
-                    <BellRing className="size-4 text-paper" />
+                    <BellRing className="size-4 text-white" />
                     WhatsApp reminders
                   </span>
-                  <span className="text-body-sm font-normal text-graphite">
+                  <span className="text-body font-normal text-mute">
                     Payment confirmation, plus renewal reminders 7 days and 1 day before
                     your plan ends.
                   </span>
@@ -251,7 +251,7 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
                 <div className="flex items-start justify-between gap-4">
                   <Label htmlFor="workout-nudges" className="flex-col items-start gap-1">
                     <span>Workout reminders</span>
-                    <span className="text-body-sm font-normal text-graphite">
+                    <span className="text-body font-normal text-mute">
                       A friendly nudge on your training days.
                     </span>
                   </Label>
@@ -265,13 +265,13 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
               )}
             </div>
 
-            <div className="flex items-start justify-between gap-4 rounded-lg border border-line p-5">
+            <div className="flex items-start justify-between gap-4 rounded-card bg-void p-5">
               <Label htmlFor="pt-addon" className="flex-col items-start gap-1">
                 <span className="flex items-center gap-2">
-                  <Dumbbell className="size-4 text-paper" />
+                  <Dumbbell className="size-4 text-white" />
                   Add {personalTrainingAddOn.name}
                 </span>
-                <span className="text-body-sm font-normal text-graphite">
+                <span className="text-body font-normal text-mute">
                   {formatINR(personalTrainingAddOn.pricePerMonth)}/mo.{" "}
                   {personalTrainingAddOn.description}
                 </span>
@@ -283,35 +283,35 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
               />
             </div>
 
-            <div className="grid gap-2.5 text-body-sm">
-              <p className="text-caption font-semibold tracking-[0.14em] text-pewter uppercase">Order summary</p>
+            <div className="grid gap-3 text-body">
+              <p className="label text-smoke">Order summary</p>
               <div className="flex justify-between">
-                <span className="text-graphite">
+                <span className="text-mute">
                   {plan.name} plan ({plan.duration})
                 </span>
                 <span>{formatINR(plan.price)}</span>
               </div>
               {addTraining && (
                 <div className="flex justify-between">
-                  <span className="text-graphite">
+                  <span className="text-mute">
                     Personal Training ({plan.months} x {formatINR(personalTrainingAddOn.pricePerMonth)})
                   </span>
                   <span>{formatINR(trainingCost)}</span>
                 </div>
               )}
               <div className="flex justify-between">
-                <span className="text-graphite">Joining fee</span>
+                <span className="text-mute">Joining fee</span>
                 <span>
-                  <span className="mr-2 text-pewter line-through">{formatINR(999)}</span>
+                  <span className="mr-2 text-smoke line-through">{formatINR(999)}</span>
                   {formatINR(0)}
                 </span>
               </div>
               <Separator className="my-1" />
               <div className="flex items-baseline justify-between">
-                <span className="font-semibold text-paper">Total</span>
-                <span className="figure text-[28px] leading-none text-paper">
+                <span className="font-medium text-white">Total</span>
+                <span className="display text-sub text-white">
                   {formatINR(total)}
-                  <span className="ml-1.5 font-sans text-body-sm font-normal tracking-normal text-pewter">
+                  <span className="ml-1.5 text-body font-normal tracking-normal text-smoke">
                     incl. GST
                   </span>
                 </span>
@@ -333,7 +333,7 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
                   <>Pay {formatINR(total)} (demo)</>
                 )}
               </Button>
-              <p className="flex items-center justify-center gap-1.5 text-center text-body-sm text-pewter">
+              <p className="flex items-center justify-center gap-1.5 text-center text-body text-smoke">
                 <ShieldCheck className="size-3.5" />
                 Demo only. No real payment is taken and no WhatsApp message is sent.
               </p>

@@ -2,210 +2,129 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-/* Class based dark variant so OS dark mode never restyles this page. Dark
-   bands are styled explicitly, not through a theme switch. */
 @custom-variant dark (&:is(.dark *));
 
-/* Iron Warriors design system, "Sequel" prototype.
-   Pitch-black void (#000) with flat #202020 cards and #333 hairlines.
-   Strictly achromatic. The single accent is lamp cream #F5F5F0 on the
-   primary filled pill, the only element with a soft shadow. Headlines are
-   Geist 300 with one Instrument Serif italic word. Contrast (WCAG AA):
-     white    #FFFFFF on #000      21:1
-     graphite #D4D4D4 on #000      14.0:1 (body)
-     pewter   #999999 on #202020    5.9:1, on #000 7.4:1
-     fog      #999999 on #202020    5.9:1, on #000 7.4:1
-     black    #000 on lamp cream   19.6:1 */
-:root {
-  --page-max-width: 1200px;
-  --card-padding: 32px;
+/* Iron Warriors, Sequel system. Built from the Sequel DESIGN.md only.
+   A pitch-black void, one #202020 elevation step, #333 hairlines and a
+   single lamp cream #F5F5F0 filled pill. Strictly achromatic outside the
+   WhatsApp phone preview. Contrast (WCAG AA):
+     white  #FFFFFF on #000 / #202020   21:1 / 16.1:1
+     mute   #BDBDBD on #000 / #202020   11.1:1 / 8.5:1
+     smoke  #999999 on #000 / #202020    7.4:1 / 5.7:1
+     black  #000000 on lamp cream       19.6:1 */
 
-  --radius: 0.75rem;
+:root {
+  --radius: 10px;
   --background: #000000;
-  --foreground: #f5f5f5;
-  --card: #000000;
-  --card-foreground: #f5f5f5;
-  --popover: #0b0b0b;
-  --popover-foreground: #f5f5f5;
+  --foreground: #ffffff;
+  --card: #202020;
+  --card-foreground: #ffffff;
+  --popover: #202020;
+  --popover-foreground: #ffffff;
   --primary: #f5f5f0;
   --primary-foreground: #000000;
   --secondary: #202020;
-  --secondary-foreground: #f5f5f5;
+  --secondary-foreground: #ffffff;
   --muted: #202020;
   --muted-foreground: #999999;
   --accent: #202020;
-  --accent-foreground: #f5f5f5;
-  --destructive: #f87171;
+  --accent-foreground: #ffffff;
+  --destructive: #ff8a8a;
   --border: #333333;
-  --input: #3d3d3d;
-  --ring: #f5f5f5;
+  --input: #333333;
+  --ring: #f5f5f0;
 }
 
 @theme {
-  /* Surfaces */
-  --color-ink: #000000;
-  --color-ink-2: #0b0b0b;
-  --color-ink-3: #202020;
-  --color-bone: #0b0b0b;
-  --color-line: #262626;
-  --color-line-strong: #3d3d3d;
-  --color-line-dark: #333333;
+  --color-void: #000000;
+  --color-charcoal: #202020;
+  --color-graphite: #333333;
+  --color-cream: #f5f5f0;
+  --color-cream-dim: #e6e6df;
+  --color-smoke: #999999;
+  --color-mute: #bdbdbd;
 
-  /* Text */
-  --color-paper: #f5f5f5;
-  --color-graphite: #d4d4d4;
-  --color-pewter: #999999;
-  --color-mist: #c4c4c4;
-  --color-fog: #999999;
-
-  /* The single accent: muted brass. Token keeps its old name so the
-     component API is unchanged. */
-  --color-crimson: #f5f5f0;
-  --color-crimson-deep: #e4e4dc;
-  --color-ember: #f5f5f0;
-  --shadow-lamp: 0 10px 30px -10px rgba(245, 245, 240, 0.35);
-
-  /* Type scale */
-  --text-caption: 12px;
-  --text-caption--line-height: 16px;
-  --text-body-sm: 14px;
-  --text-body-sm--line-height: 22px;
+  --text-label: 11px;
+  --text-label--line-height: 1.5;
   --text-body: 16px;
-  --text-body--line-height: 26px;
-  --text-subheading: 18px;
-  --text-subheading--line-height: 29px;
-  --text-heading-sm: 20px;
-  --text-heading-sm--line-height: 28px;
-  --text-heading: 26px;
-  --text-heading--line-height: 30px;
-  --text-heading-lg: 48px;
-  --text-heading-lg--line-height: 50px;
+  --text-body--line-height: 1.5;
+  --text-body-lg: 20px;
+  --text-body-lg--line-height: 1.5;
+  --text-sub: 30px;
+  --text-sub--line-height: 1.2;
+  --text-heading: 54px;
+  --text-heading--line-height: 1.1;
+  --text-display: 128px;
+  --text-display--line-height: 1;
 
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 10px;
-  --radius-xl: 14px;
-  --radius-2xl: 20px;
-  --radius-3xl: 24px;
-  --radius-full: 9999px;
+  --radius-card: 10px;
 
-  /* Flat page. Floating layers get a hairline, not a glow. */
-  --shadow-subtle: none;
-  --shadow-float: 0 0 0 1px #333333;
+  --shadow-lamp: 0 4px 20px 0 rgba(0, 0, 0, 0.15), 0 8px 28px -12px rgba(245, 245, 240, 0.28);
+  --shadow-glass: 0 10px 30px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+
+  --ease-film: cubic-bezier(0.625, 0.05, 0, 1);
 
   --container-page: 1200px;
 }
 
 @theme inline {
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-heading: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
+  --color-primary-foreground: var(--primary-foreground);
   --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted-foreground: var(--muted-foreground);
 }
 
-/* Monumental display type: Inter Tight 700, tight tracking. */
-@utility headline {
-  font-family: var(--font-heading);
+/* Section display heading: hairline sans, tight tracking. */
+@utility display {
   font-weight: 300;
   letter-spacing: -0.05em;
-  line-height: 1;
+  line-height: 1.02;
   text-wrap: balance;
 }
 
-@utility label-caps {
-  font-size: 12px;
-  line-height: 16px;
+/* The single italic serif payoff word inside a display line. */
+@utility payoff {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+/* Uppercase tracked label for metadata, badges and captions. */
+@utility label {
+  font-size: 11px;
+  line-height: 1.5;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-/* Section label: quiet grey caps with a hairline rule. No accent here. */
-@utility eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 12px;
-  line-height: 16px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-pewter);
-  &::before {
-    content: "";
-    width: 32px;
-    height: 1px;
-    background: currentColor;
-  }
+/* Frosted glass badge with the inner top highlight. */
+@utility glass {
+  background: rgba(200, 200, 200, 0.1);
+  backdrop-filter: blur(20px) saturate(1.4);
+  box-shadow: var(--shadow-glass);
 }
 
-/* The one italic display serif word in each headline. */
-@utility serif-accent {
-  font-family: var(--font-serif), Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.02em;
-}
-
-/* Frosted glass chip with an inner top highlight. */
-@utility glass-chip {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(12px);
-}
-
-@utility eyebrow-dark {
-  color: var(--color-pewter);
-}
-
-@utility figure {
-  font-family: var(--font-heading);
-  font-weight: 300;
-  letter-spacing: -0.04em;
-  font-variant-numeric: tabular-nums;
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  html {
-    @apply bg-black font-sans text-paper;
-  }
-  body {
-    @apply bg-black text-body text-graphite;
-  }
-  a:focus-visible,
-  button:focus-visible,
-  summary:focus-visible,
-  [role="switch"]:focus-visible {
-    outline: 2px solid #f5f5f5;
-    outline-offset: 3px;
-  }
-  ::selection {
-    background: #f5f5f0;
-    color: #000000;
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
   }
 }
+@utility marquee {
+  animation: marquee 45s linear infinite;
+}
 
-/* WhatsApp mock animations */
+/* WhatsApp preview motion */
 @keyframes wa-pop {
   from {
     opacity: 0;
@@ -230,14 +149,41 @@
 }
 .wa-pop {
   transform-origin: left bottom;
-  animation: wa-pop 250ms ease-out both;
+  animation: wa-pop 250ms var(--ease-film) both;
 }
 .wa-dot {
   animation: wa-dot 1s ease-in-out infinite;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .wa-pop,
-  .wa-dot {
+  .wa-dot,
+  .marquee {
     animation: none;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply bg-void font-sans text-white;
+    font-feature-settings: "ss01" on, "cv11" on;
+  }
+  body {
+    @apply bg-void text-body text-white;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible,
+  input:focus-visible,
+  [role="switch"]:focus-visible {
+    outline: 2px solid #f5f5f0;
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: #f5f5f0;
+    color: #000000;
   }
 }
