@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 import { Badge } from "@/components/ui/badge"
 import { HeadingPair } from "./heading"
 
@@ -10,6 +12,16 @@ const features = [
   ["Nutrition", "Diet guidance", "Indian diet plans built around dal, roti and paneer, not imported superfoods you cannot find."],
 ]
 
+// Photo per card, keyed by title so card order can change freely.
+const photos: Record<string, { src: string; alt: string }> = {
+  "Group classes": { src: "/images/feature-1.webp", alt: "Dark studio with exercise mats and kettlebells, two figures moving in shadow" },
+  "Certified trainers": { src: "/images/feature-2.webp", alt: "Coach's chalked hands adjusting a lifter's grip on a barbell" },
+  "Pro equipment": { src: "/images/feature-3.webp", alt: "Loaded Olympic barbell on a wooden platform with power racks and turf behind" },
+  "Progress tracking": { src: "/images/feature-4.webp", alt: "Tape measure and notebook on a leather gym bench under a desk lamp" },
+  "Open 7 days": { src: "/images/feature-5.webp", alt: "Empty gym at night with city lights through floor-to-ceiling windows" },
+  "Diet guidance": { src: "/images/feature-6.webp", alt: "Dal in a steel bowl with rotis, paneer and a shaker bottle" },
+}
+
 const classes = [
   "Power Yoga",
   "Strength Basics",
@@ -20,8 +32,8 @@ const classes = [
   "Open 5 AM to 11 PM",
 ]
 
-// Two column cinematic card grid. We have no photography yet, so each card
-// carries a neutral placeholder plate, clearly marked for Grenish to replace.
+// Two column cinematic media cards: full-bleed photo, glass badge top right,
+// text bottom left over a bottom scrim.
 export function Floor() {
   return (
     <section id="floor" aria-labelledby="floor-title" className="scroll-mt-18 bg-void">
@@ -36,9 +48,21 @@ export function Floor() {
         <ul className="mt-16 grid gap-4 md:grid-cols-2 lg:mt-20">
           {features.map(([tag, title, text]) => (
             <li key={title} className="relative flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-card bg-charcoal sm:aspect-[16/11]">
-              <span className="label absolute top-5 left-5 text-smoke">Photo placeholder: replace with a gym photo</span>
+              {photos[title] && (
+                <Image
+                  src={photos[title].src}
+                  alt={photos[title].alt}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              )}
+              <span
+                aria-hidden
+                className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black via-black/75 to-transparent"
+              />
               <Badge className="absolute top-4 right-4">{tag}</Badge>
-              <div className="p-6 sm:p-8">
+              <div className="relative p-6 sm:p-8">
                 <h3 className="text-[21px] font-medium tracking-[-0.02em] text-white">{title}</h3>
                 <p className="mt-2 max-w-md text-body text-mute">{text}</p>
               </div>
