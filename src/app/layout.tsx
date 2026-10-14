@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Geist } from "next/font/google"
+import { Geist, Instrument_Serif } from "next/font/google"
 import { FontSwitcher } from "@/components/theme/font-switcher"
 import { previewFontVars } from "@/lib/preview-fonts"
 import { ThemeProvider } from "@/components/theme/theme-provider"
@@ -11,6 +11,17 @@ const geist = Geist({
   variable: "--font-geist",
   subsets: ["latin", "latin-ext"],
   weight: ["200", "300", "400", "500"],
+  display: "swap",
+  preload: true,
+})
+
+// Instrument Serif italic stands in for Bradford: the one payoff word.
+// It has no rupee sign, which is fine: it never sets a price.
+const serif = Instrument_Serif({
+  variable: "--font-instrument",
+  subsets: ["latin"],
+  weight: "400",
+  style: "italic",
   display: "swap",
   preload: true,
 })
@@ -47,7 +58,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en-IN"
       suppressHydrationWarning
-      className={`${geist.variable} ${previewFontVars} h-full scroll-smooth antialiased`}
+      className={`${geist.variable} ${serif.variable} ${previewFontVars} h-full scroll-smooth antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: fontScript }} />

@@ -1,9 +1,17 @@
-import { IBM_Plex_Sans, Inter, Inter_Tight, Manrope, Public_Sans, Source_Sans_3 } from "next/font/google"
+import {
+  Barlow,
+  Barlow_Condensed,
+  Fraunces,
+  Newsreader,
+  Space_Grotesk,
+  IBM_Plex_Sans,
+  Inter, Inter_Tight, Manrope, Public_Sans, Source_Sans_3
+} from "next/font/google"
 
 // PREVIEW ONLY. Candidate sans pairings for the floating font switcher.
 // preload: false keeps these out of <link rel=preload>; the @font-face rules
 // exist but a browser only downloads a file once [data-font=x] makes an element
-// use that family. latin-ext carries the rupee sign (U+20B9) in every family here.
+// use that family. latin-ext carries the rupee sign (U+20B9); Barlow has none, so Inter fills it in.
 export const plex = IBM_Plex_Sans({
   variable: "--font-plex",
   subsets: ["latin", "latin-ext"],
@@ -46,4 +54,40 @@ export const publicSans = Public_Sans({
   preload: false,
 })
 
-export const previewFontVars = [plex, sourceSans, interTight, inter, manrope, publicSans].map((f) => f.variable).join(" ")
+export const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin", "latin-ext"],
+  style: ["normal", "italic"],
+  display: "swap",
+  preload: false,
+})
+export const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin", "latin-ext"],
+  style: ["normal", "italic"],
+  display: "swap",
+  preload: false,
+})
+export const barlowCond = Barlow_Condensed({
+  variable: "--font-barlow-cond",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  display: "swap",
+  preload: false,
+})
+export const barlow = Barlow({
+  variable: "--font-barlow",
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  display: "swap",
+  preload: false,
+})
+export const grotesk = Space_Grotesk({
+  variable: "--font-grotesk",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+  preload: false,
+})
+
+export const previewFontVars = [newsreader, fraunces, barlowCond, barlow, grotesk, plex, sourceSans, interTight, inter, manrope, publicSans].map((f) => f.variable).join(" ")

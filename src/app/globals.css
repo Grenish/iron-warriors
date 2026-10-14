@@ -100,7 +100,7 @@
   --shadow-lamp: var(--shadow-lamp);
   --shadow-glass: var(--shadow-glass);
   --font-sans: var(--ff-body), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--ff-accent), var(--font-sans);
+  --font-serif: var(--ff-accent), Georgia, serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-ring: var(--ring);
@@ -123,7 +123,7 @@
   text-wrap: balance;
 }
 
-/* The single payoff word inside a display line, same sans family. */
+/* The single payoff word inside a display line. */
 @utility payoff {
   font-family: var(--font-serif);
   font-style: var(--ff-accent-style);
@@ -230,13 +230,39 @@
   }
 }
 
-/* Font pairings, all sans. Current Sans is the default; the rest are PREVIEW
-   ONLY, set by the floating font switcher on <html data-font>. The payoff word
-   is the same sans: italic where the family has one, otherwise a lighter weight. */
+/* Font pairings. Current is the default; the rest are PREVIEW ONLY, set by
+   the floating font switcher on <html data-font>. In the sans set the payoff
+   word is the same sans: italic where the family has one, else a lighter weight. */
 html {
   --ff-body: var(--font-geist);
   --ff-display: var(--font-geist);
   --ff-display-weight: 300;
+  --ff-accent: var(--font-instrument);
+  --ff-accent-style: italic;
+  --ff-accent-weight: 400;
+}
+html[data-font="editorial"] {
+  --ff-body: var(--font-inter);
+  --ff-display: var(--font-newsreader);
+  --ff-accent: var(--font-newsreader);
+}
+html[data-font="refined"] {
+  --ff-display: var(--font-fraunces);
+  --ff-accent: var(--font-fraunces);
+}
+/* Barlow lacks the rupee sign, so Inter supplies it for prices. */
+html[data-font="athletic"] {
+  --ff-body: var(--font-barlow), var(--font-inter);
+  --ff-display: var(--font-barlow-cond), var(--font-inter);
+  --ff-display-weight: 500;
+  --ff-accent: var(--font-barlow-cond), var(--font-inter);
+  --ff-accent-weight: 500;
+}
+html[data-font="grotesk"] {
+  --ff-body: var(--font-inter);
+  --ff-display: var(--font-grotesk);
+}
+html[data-font="geist"] {
   --ff-accent: var(--font-geist);
   --ff-accent-style: normal;
   --ff-accent-weight: 200;
