@@ -99,8 +99,8 @@
   --color-primary-hover: var(--primary-hover);
   --shadow-lamp: var(--shadow-lamp);
   --shadow-glass: var(--shadow-glass);
-  --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font-instrument), Georgia, serif;
+  --font-sans: var(--ff-body), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--ff-accent), var(--font-sans);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-ring: var(--ring);
@@ -116,17 +116,18 @@
 
 /* Section display heading: hairline sans, tight tracking. */
 @utility display {
-  font-weight: 300;
+  font-family: var(--ff-display), var(--font-sans);
+  font-weight: var(--ff-display-weight);
   letter-spacing: -0.05em;
   line-height: 1.02;
   text-wrap: balance;
 }
 
-/* The single italic serif payoff word inside a display line. */
+/* The single payoff word inside a display line, same sans family. */
 @utility payoff {
   font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
+  font-style: var(--ff-accent-style);
+  font-weight: var(--ff-accent-weight);
   letter-spacing: -0.03em;
 }
 
@@ -227,4 +228,50 @@
     background: var(--primary);
     color: var(--primary-foreground);
   }
+}
+
+/* Font pairings, all sans. Current Sans is the default; the rest are PREVIEW
+   ONLY, set by the floating font switcher on <html data-font>. The payoff word
+   is the same sans: italic where the family has one, otherwise a lighter weight. */
+html {
+  --ff-body: var(--font-geist);
+  --ff-display: var(--font-geist);
+  --ff-display-weight: 300;
+  --ff-accent: var(--font-geist);
+  --ff-accent-style: normal;
+  --ff-accent-weight: 200;
+}
+html[data-font="precision"] {
+  --ff-body: var(--font-plex);
+  --ff-display: var(--font-plex);
+  --ff-accent: var(--font-plex);
+  --ff-accent-style: italic;
+  --ff-accent-weight: 300;
+}
+html[data-font="document"] {
+  --ff-body: var(--font-source);
+  --ff-display: var(--font-source);
+  --ff-accent: var(--font-source);
+  --ff-accent-style: italic;
+  --ff-accent-weight: 300;
+}
+html[data-font="inter"] {
+  --ff-body: var(--font-inter);
+  --ff-display: var(--font-inter-tight);
+  --ff-accent: var(--font-inter-tight);
+  --ff-accent-style: italic;
+  --ff-accent-weight: 300;
+}
+html[data-font="manrope"] {
+  --ff-body: var(--font-manrope);
+  --ff-display: var(--font-manrope);
+  --ff-accent: var(--font-manrope);
+  --ff-accent-weight: 200;
+}
+html[data-font="public"] {
+  --ff-body: var(--font-public);
+  --ff-display: var(--font-public);
+  --ff-accent: var(--font-public);
+  --ff-accent-style: italic;
+  --ff-accent-weight: 300;
 }

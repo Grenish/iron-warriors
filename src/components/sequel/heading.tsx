@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils"
 
 // Sequel "section heading pair": a context line in hairline sans, then the
-// payoff line with one italic serif word.
+// payoff line with one accent word.
 export function HeadingPair({
   id,
   lead,
