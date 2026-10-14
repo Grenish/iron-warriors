@@ -180,7 +180,7 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
             <DialogHeader>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3 pr-8">
                 <p className="eyebrow">Demo checkout</p>
                 {plan.popular && <Badge>Most Popular</Badge>}
               </div>
