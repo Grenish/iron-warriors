@@ -25,12 +25,12 @@ export function Closing() {
           <div>
             <Wordmark />
             <p className="mt-4 max-w-xs text-body text-mute">
-              Strength, conditioning and community in the heart of Bengaluru.
+              Strength, conditioning and community in the heart of Tezpur.
             </p>
           </div>
           <div>
             <p className="label text-smoke">Visit</p>
-            <p className="mt-3 text-body text-mute">80 Feet Road, 4th Block, Koramangala, Bengaluru 560034</p>
+            <p className="mt-3 text-body text-mute">Main Road, Tezpur, Assam 784001</p>
             <p className="mt-2 text-body text-mute">Mon to Fri 5 AM to 11 PM, Sat and Sun 6 AM to 9 PM</p>
           </div>
           <div>

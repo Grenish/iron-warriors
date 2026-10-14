@@ -15,7 +15,7 @@ export function Hero() {
   return (
     <section id="top" aria-labelledby="hero-title" className="relative flex min-h-[100svh] flex-col bg-void">
       <div className="mx-auto flex w-full max-w-page flex-1 flex-col justify-end px-5 pt-32 pb-12 sm:px-8 sm:pb-16">
-        <p className="label text-smoke">Koramangala, Bengaluru</p>
+        <p className="label text-smoke">Tezpur, Assam</p>
         <h1
           id="hero-title"
           className="display mt-6 text-[60px] leading-[0.98] text-ink sm:text-[104px] lg:text-display"
@@ -28,7 +28,7 @@ export function Hero() {
           <div className="max-w-xl">
             <p className="text-body-lg text-mute">
               Serious equipment, certified coaches and WhatsApp reminders that keep you consistent.
-              Koramangala, Bengaluru, from ₹1,499/month.
+              Tezpur, Assam, from ₹1,499/month.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#plans" className={buttonVariants({ size: "lg" })}>

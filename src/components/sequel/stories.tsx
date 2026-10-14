@@ -3,7 +3,7 @@ import { HeadingPair } from "./heading"
 
 const testimonials = [
   ["I lost 9 kg in five months without giving up home food. The diet plan is built around an Indian kitchen, which is why I could stick to it.", "Priya N.", "Annual member", "HSR Layout"],
-  ["I train at 5:30 AM before work and the floor is never crowded. The WhatsApp renewal reminders have kept my membership from lapsing twice.", "Rohan K.", "Half-Yearly member", "Koramangala"],
+  ["I train at 5:30 AM before work and the floor is never crowded. The WhatsApp renewal reminders have kept my membership from lapsing twice.", "Rohan K.", "Half-Yearly member", "Tezpur"],
   ["The coaches correct your form before you have to ask. My deadlift went from 80 kg to 140 kg in a year, with no injuries along the way.", "Sandeep M.", "Annual member", "BTM Layout"],
   ["I joined for Zumba and stayed for the strength classes. Clean facilities, a professional front desk and no sales pressure at any point.", "Ananya R.", "Quarterly member", "Ejipura"],
 ]
