@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react"
+import { useEffect, useLayoutEffect, useRef, useState, useSyncExternalStore } from "react"
 import {
   ArrowLeft,
   BadgeCheck,
@@ -34,15 +34,18 @@ const messages = [
   },
 ]
 
-const TYPING_MS = 900
-const GAP_MS = 650
-const TAP_DELAY_MS = 900
-const TAP_MS = 350
+// Typing time scales a little with message length so the rhythm feels human.
+const typingMs = (text: string) => Math.min(1500, 800 + text.length * 6)
+const READ_GAP_MS = [1300, 1500, 0, 0]
+const TAP_DELAY_MS = 1400
+const TAP_MS = 380
 const LOOP_PAUSE_MS = 5000
+const FADE_MS = 500
+const EASE = "cubic-bezier(0.22, 1, 0.36, 1)"
 
-type State = { shown: number; typing: boolean; pressed: boolean; tapped: boolean }
-const initial: State = { shown: 0, typing: false, pressed: false, tapped: false }
-const complete: State = { shown: messages.length, typing: false, pressed: false, tapped: true }
+type State = { shown: number; typing: boolean; pressed: boolean; tapped: boolean; fading: boolean }
+const initial: State = { shown: 0, typing: false, pressed: false, tapped: false, fading: false }
+const complete: State = { ...initial, shown: messages.length, tapped: true }
 
 function subscribeMotion(onChange: () => void) {
   const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
@@ -115,10 +118,10 @@ export function Phone() {
     const timers: ReturnType<typeof setTimeout>[] = []
     const at = (ms: number, fn: () => void) => timers.push(setTimeout(fn, ms))
 
-    function run(start: number) {
-      let t = start
+    function run() {
+      let t = 0
       at(t, () => setState(initial))
-      t += 400
+      t += 500
       messages.forEach((m, i) => {
         if (i === messages.length - 1) {
           // Tap the template button, then the confirmation arrives.
@@ -126,21 +129,40 @@ export function Phone() {
           at(t, () => setState((s) => ({ ...s, pressed: true })))
           t += TAP_MS
           at(t, () => setState((s) => ({ ...s, pressed: false, tapped: true })))
-          t += 300
+          t += 450
         }
         at(t, () => setState((s) => ({ ...s, typing: true })))
-        t += TYPING_MS
+        t += typingMs(m.text)
         at(t, () => setState((s) => ({ ...s, typing: false, shown: i + 1 })))
-        t += GAP_MS
+        t += 420 + READ_GAP_MS[i]
       })
       t += LOOP_PAUSE_MS
-      at(t, () => run(0))
+      at(t, () => setState((s) => ({ ...s, fading: true })))
+      t += FADE_MS
+      at(t, run)
     }
-    run(0)
+    run()
     return () => timers.forEach(clearTimeout)
   }, [reduced, visible])
 
   const view = reduced ? complete : state
+
+  // FLIP glide: when the list grows, start it where it was and ease it up,
+  // so older bubbles slide smoothly instead of jumping. Transform only.
+  const listRef = useRef<HTMLDivElement>(null)
+  const prevHeight = useRef(0)
+  useLayoutEffect(() => {
+    const el = listRef.current
+    if (!el) return
+    const h = el.offsetHeight
+    const delta = h - prevHeight.current
+    prevHeight.current = h
+    if (reduced || view.shown === 0 || delta <= 0) return
+    el.animate([{ transform: `translateY(${delta}px)` }, { transform: "translateY(0)" }], {
+      duration: 420,
+      easing: EASE,
+    })
+  }, [view.shown, view.typing, reduced])
 
   return (
     <div ref={ref} className="mx-auto w-full max-w-[320px]">
@@ -184,9 +206,16 @@ export function Phone() {
 
           {/* Chat body */}
           <div
-            className="flex min-h-0 flex-1 flex-col justify-end gap-1.5 overflow-hidden px-3 py-3"
+            className="flex min-h-0 flex-1 flex-col justify-end overflow-hidden px-3 py-3"
             style={{ backgroundImage: doodle }}
           >
+            <div
+              ref={listRef}
+              className={cn(
+                "flex flex-col gap-1.5 will-change-transform transition-opacity duration-500",
+                view.fading && "opacity-0"
+              )}
+            >
             <span className="mb-1 self-center rounded-md bg-[#182229] px-2.5 py-1 text-[11px] text-[#aebac1]">
               Today
             </span>
@@ -201,7 +230,8 @@ export function Phone() {
                 {m.button && (
                   <div
                     className={cn(
-                      "flex items-center justify-center gap-1.5 border-t border-[#ffffff1a] py-2 text-[13.5px] font-medium text-[#53bdeb] transition-colors duration-150",
+                      "flex items-center justify-center gap-1.5 border-t border-[#ffffff1a] py-2 text-[13.5px] font-medium text-[#53bdeb] transition-[background-color,color] duration-200",
+                      !reduced && "wa-fade-late",
                       view.pressed && "bg-[#ffffff14]",
                       view.tapped && i === 2 && "text-[#53bdeb]/80"
                     )}
@@ -213,7 +243,7 @@ export function Phone() {
               </Bubble>
             ))}
             {view.typing && (
-              <div className="wa-pop relative self-start">
+              <div className={cn("relative self-start", !reduced && "wa-pop")}>
                 <svg viewBox="0 0 8 13" className="absolute top-0 -left-2 h-[13px] w-2 fill-[#202c33]">
                   <path d="M8 0H1.5C.4 0-.4 1.3.3 2.2L8 13z" />
                 </svg>
@@ -228,6 +258,7 @@ export function Phone() {
                 </div>
               </div>
             )}
+            </div>
           </div>
 
           {/* Input bar, purely visual */}

@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import { Plus } from "lucide-react"
 
 import { HeadingPair } from "./heading"
@@ -11,6 +14,7 @@ const faqs = [
 ]
 
 export function Faq() {
+  const [open, setOpen] = useState<number | null>(0)
   return (
     <section id="faq" aria-labelledby="faq-title" className="scroll-mt-18 bg-void">
       <div className="mx-auto max-w-page px-5 py-24 sm:px-8 lg:py-30">
@@ -23,17 +27,44 @@ export function Faq() {
           after="."
         />
         <div className="mx-auto mt-16 max-w-3xl border-t border-graphite lg:mt-20">
-          {faqs.map(([q, a], i) => (
-            <details key={q} open={i === 0} className="group border-b border-graphite">
-              <summary className="flex min-h-18 cursor-pointer list-none items-center justify-between gap-6 py-6 text-body-lg font-light tracking-[-0.01em] [&::-webkit-details-marker]:hidden">
-                {q}
-                <span aria-hidden className="glass flex size-10 shrink-0 items-center justify-center rounded-full">
-                  <Plus className="size-4 transition-transform duration-300 ease-film group-open:rotate-45" strokeWidth={1.5} />
-                </span>
-              </summary>
-              <p className="max-w-2xl pb-8 text-body text-mute">{a}</p>
-            </details>
-          ))}
+          {faqs.map(([q, a], i) => {
+            const isOpen = open === i
+            return (
+              <div key={q} className="border-b border-graphite">
+                <h3>
+                  <button
+                    type="button"
+                    id={`faq-q-${i}`}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-a-${i}`}
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    className="flex min-h-18 w-full cursor-pointer items-center justify-between gap-6 py-6 text-left text-body-lg font-light tracking-[-0.01em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream"
+                  >
+                    {q}
+                    <span aria-hidden className="glass flex size-10 shrink-0 items-center justify-center rounded-full">
+                      <Plus
+                        className={`size-4 transition-transform duration-300 ease-film ${isOpen ? "rotate-45" : ""}`}
+                        strokeWidth={1.5}
+                      />
+                    </span>
+                  </button>
+                </h3>
+                {/* Answer always stays in the HTML; collapsed via grid rows so it animates. */}
+                <div
+                  id={`faq-a-${i}`}
+                  role="region"
+                  aria-labelledby={`faq-q-${i}`}
+                  inert={!isOpen}
+                  data-state={isOpen ? "open" : "closed"}
+                  className={`grid transition-[grid-template-rows,opacity] duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="max-w-2xl pb-8 text-body text-mute">{a}</p>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>
