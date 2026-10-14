@@ -21,7 +21,7 @@ export function Hero() {
       <span aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-t from-black via-black/70 to-black/20" />
       <span aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-r from-black/80 via-black/30 to-transparent" />
       <div className="mx-auto flex w-full max-w-page flex-1 flex-col justify-end px-5 pt-32 pb-14 sm:px-8 sm:pb-20">
-        <p className="label text-smoke">Koramangala, Bengaluru</p>
+        <p className="label text-mute">Koramangala, Bengaluru</p>
         <h1
           id="hero-title"
           className="mt-6 text-[64px] leading-[0.98] font-medium tracking-[-0.05em] text-balance sm:text-[104px] lg:text-display"
