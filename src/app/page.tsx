@@ -119,6 +119,19 @@ const disciplines = [
   { label: "Recovery", days: "Sun" },
 ]
 
+// Sets one word of a headline in the italic display serif.
+function Accented({ text, word }: { text: string; word?: string }) {
+  if (!word || !text.includes(word)) return <>{text}</>
+  const [before, ...rest] = text.split(word)
+  return (
+    <>
+      {before}
+      <span className="serif-accent">{word}</span>
+      {rest.join(word)}
+    </>
+  )
+}
+
 // Section header used on every band. Left aligned, editorial: label and
 // headline on the left, the supporting line on the right on wide screens.
 function SectionIntro({
@@ -127,12 +140,14 @@ function SectionIntro({
   text,
   dark = false,
   id,
+  accent,
 }: {
   eyebrow: string
   title: string
   text: string
   dark?: boolean
   id?: string
+  accent?: string
 }) {
   return (
     <div className="mb-12 grid gap-6 sm:mb-16 lg:grid-cols-12 lg:items-end lg:gap-10">
@@ -145,7 +160,7 @@ function SectionIntro({
             dark ? "text-white" : "text-paper"
           )}
         >
-          {title}
+          <Accented text={title} word={accent} />
         </h2>
       </div>
       <p
@@ -191,7 +206,7 @@ function FeatureText({
   )
 }
 
-const cardBase = "rounded-2xl border border-line-dark bg-black p-6 sm:p-10"
+const cardBase = "rounded-2xl border border-line-dark bg-ink-3 p-6 sm:p-10"
 const panel = "rounded-xl border border-line-dark bg-ink-2"
 
 export default function Home() {
@@ -208,9 +223,9 @@ export default function Home() {
               <div className="lg:col-span-7">
                 <a
                   href="#reminders"
-                  className="inline-flex min-h-10 items-center gap-3 rounded-full border border-line-dark py-1.5 pr-4 pl-1.5 text-body-sm text-mist transition-colors hover:border-fog hover:text-white"
+                  className="inline-flex min-h-10 items-center gap-3 glass-chip rounded-full py-1.5 pr-4 pl-1.5 text-body-sm text-mist transition-colors hover:border-fog hover:text-white"
                 >
-                  <span className="rounded-full border border-white/40 px-2.5 py-1 text-[11px] font-semibold tracking-[0.12em] text-white uppercase">
+                  <span className="rounded-full bg-crimson px-2.5 py-1 text-[11px] font-medium tracking-[0.06em] text-black uppercase">
                     New
                   </span>
                   WhatsApp reminders on every membership
@@ -219,7 +234,9 @@ export default function Home() {
 
                 <h1 className="headline mt-10 text-[56px] sm:text-[88px] lg:text-[120px]">
                   Iron Warriors.
-                  <span className="block text-fog">Train with discipline.</span>
+                  <span className="block">
+                    Train with <span className="serif-accent">discipline</span>.
+                  </span>
                 </h1>
 
                 <p className="mt-8 max-w-xl text-subheading text-mist">
@@ -366,6 +383,7 @@ export default function Home() {
             <SectionIntro
               eyebrow="Why Iron Warriors"
               title="Built for real results"
+              accent="real"
               text="Everything you need to show up, train well and keep coming back."
             />
             <div className="grid gap-4 lg:grid-cols-5">
@@ -500,13 +518,14 @@ export default function Home() {
               dark
               eyebrow="Member stories"
               title="Trusted in Koramangala"
+              accent="Trusted"
               text="Rated 4.8★ on Google by the people who train here every week."
             />
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {testimonials.map(({ quote, name, plan, area }) => (
                 <figure
                   key={name}
-                  className="flex flex-col justify-between gap-8 rounded-2xl border border-line-dark bg-black p-6 sm:p-8"
+                  className="flex flex-col justify-between gap-8 rounded-2xl border border-line-dark bg-ink-3 p-6 sm:p-8"
                 >
                   <div>
                     <span aria-hidden className="headline block text-[44px] leading-none text-fog">
@@ -534,6 +553,7 @@ export default function Home() {
             <SectionIntro
               eyebrow="Auto WhatsApp reminders"
               title="Your membership, on autopilot"
+              accent="autopilot"
               text="Every member gets automatic WhatsApp messages: a payment confirmation as soon as you subscribe, renewal reminders 7 days and 1 day before your plan ends, and optional workout reminders on your training days."
             />
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
@@ -568,6 +588,7 @@ export default function Home() {
             <SectionIntro
               eyebrow="Membership plans"
               title="Pick your plan"
+              accent="plan"
               text="Simple pricing in INR, GST included. No joining fee this month. Every plan comes with WhatsApp reminders."
             />
             <Pricing />
@@ -584,7 +605,7 @@ export default function Home() {
             <div className="lg:col-span-4">
               <p className="eyebrow">FAQ</p>
               <h2 className="headline mt-6 text-[44px] text-paper sm:text-[64px]">
-                Questions, answered
+                Questions, <span className="serif-accent">answered</span>
               </h2>
               <p className="mt-5 text-subheading text-graphite">
                 Everything members usually ask before they join.
@@ -615,7 +636,7 @@ export default function Home() {
             <div className="lg:col-span-8">
               <p className="eyebrow eyebrow-dark">Start today</p>
               <h2 className="headline mt-6 text-[56px] sm:text-[88px] lg:text-[112px]">
-                Ready when you are.
+                Ready when <span className="serif-accent">you</span> are.
               </h2>
               <p className="mt-6 max-w-xl text-subheading text-mist">
                 No joining fee this month, WhatsApp reminders on every plan and a coach on the

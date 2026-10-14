@@ -28,7 +28,7 @@ export function BrandMark({ className }: { className?: string }) {
       >
         IW
       </span>
-      <span className="font-heading text-[15px] font-semibold tracking-[0.18em] uppercase">Iron Warriors</span>
+      <span className="font-heading text-[15px] font-semibold tracking-[0.08em] uppercase">Iron Warriors</span>
     </span>
   )
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Geist, Inter_Tight } from "next/font/google"
+import { Geist, Instrument_Serif } from "next/font/google"
 import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
@@ -9,11 +9,12 @@ const geist = Geist({
   subsets: ["latin"],
 })
 
-// Inter Tight for monumental display headlines and figures.
-const display = Inter_Tight({
-  variable: "--font-display",
+// Instrument Serif italic for the one accent word in each headline.
+const serif = Instrument_Serif({
+  variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: "400",
+  style: "italic",
 })
 
 const title = "Iron Warriors Gym | Memberships from ₹1,499/month"
@@ -36,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-IN"
-      className={`${geist.variable} ${display.variable} h-full scroll-smooth antialiased`}
+      className={`${geist.variable} ${serif.variable} h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col bg-black">
         {children}

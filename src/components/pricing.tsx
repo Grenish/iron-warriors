@@ -47,7 +47,7 @@ export function Pricing() {
               key={plan.id}
               className={cn(
                 "relative [--card-spacing:--spacing(7)]! sm:[--card-spacing:--spacing(7)]!",
-                featured && "border-white bg-ink-3 text-white xl:-my-3 xl:py-10"
+                featured && "border-crimson/80 bg-ink-3 text-white xl:-my-3 xl:py-10"
               )}
             >
               <CardHeader>

@@ -7,10 +7,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        // Primary actions are solid brass pills, one per view where possible.
+        // Primary actions are lamp cream pills, one per view where possible.
         // Secondary actions are solid ink or a firm outline. "inverse" is
         // the ghost outline pill for dark bands.
-        default: "bg-crimson text-black hover:bg-crimson-deep",
+        default: "bg-crimson text-black shadow-lamp hover:bg-crimson-deep",
         dark: "border-white/25 bg-transparent text-white hover:border-white hover:bg-white/5",
         outline:
           "border-line-strong bg-transparent text-paper hover:border-paper hover:bg-white/5 aria-expanded:bg-ink-3",
