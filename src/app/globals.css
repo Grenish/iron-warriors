@@ -99,8 +99,7 @@
   --color-primary-hover: var(--primary-hover);
   --shadow-lamp: var(--shadow-lamp);
   --shadow-glass: var(--shadow-glass);
-  --font-sans: var(--ff-body), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--ff-accent), Georgia, serif;
+  --font-sans: var(--font-public), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-ring: var(--ring);
@@ -114,20 +113,18 @@
   --color-muted-foreground: var(--muted-foreground);
 }
 
-/* Section display heading: hairline sans, tight tracking. */
+/* Section display heading: light sans, tight tracking. */
 @utility display {
-  font-family: var(--ff-display), var(--font-sans);
-  font-weight: var(--ff-display-weight);
+  font-weight: 300;
   letter-spacing: -0.05em;
   line-height: 1.02;
   text-wrap: balance;
 }
 
-/* The single payoff word inside a display line. */
+/* The single payoff word inside a display line: Public Sans 300 italic. */
 @utility payoff {
-  font-family: var(--font-serif);
-  font-style: var(--ff-accent-style);
-  font-weight: var(--ff-accent-weight);
+  font-style: italic;
+  font-weight: 300;
   letter-spacing: -0.03em;
 }
 
@@ -228,76 +225,4 @@
     background: var(--primary);
     color: var(--primary-foreground);
   }
-}
-
-/* Font pairings. Current is the default; the rest are PREVIEW ONLY, set by
-   the floating font switcher on <html data-font>. In the sans set the payoff
-   word is the same sans: italic where the family has one, else a lighter weight. */
-html {
-  --ff-body: var(--font-geist);
-  --ff-display: var(--font-geist);
-  --ff-display-weight: 300;
-  --ff-accent: var(--font-instrument);
-  --ff-accent-style: italic;
-  --ff-accent-weight: 400;
-}
-html[data-font="editorial"] {
-  --ff-body: var(--font-inter);
-  --ff-display: var(--font-newsreader);
-  --ff-accent: var(--font-newsreader);
-}
-html[data-font="refined"] {
-  --ff-display: var(--font-fraunces);
-  --ff-accent: var(--font-fraunces);
-}
-/* Barlow lacks the rupee sign, so Inter supplies it for prices. */
-html[data-font="athletic"] {
-  --ff-body: var(--font-barlow), var(--font-inter);
-  --ff-display: var(--font-barlow-cond), var(--font-inter);
-  --ff-display-weight: 500;
-  --ff-accent: var(--font-barlow-cond), var(--font-inter);
-  --ff-accent-weight: 500;
-}
-html[data-font="grotesk"] {
-  --ff-body: var(--font-inter);
-  --ff-display: var(--font-grotesk);
-}
-html[data-font="geist"] {
-  --ff-accent: var(--font-geist);
-  --ff-accent-style: normal;
-  --ff-accent-weight: 200;
-}
-html[data-font="precision"] {
-  --ff-body: var(--font-plex);
-  --ff-display: var(--font-plex);
-  --ff-accent: var(--font-plex);
-  --ff-accent-style: italic;
-  --ff-accent-weight: 300;
-}
-html[data-font="document"] {
-  --ff-body: var(--font-source);
-  --ff-display: var(--font-source);
-  --ff-accent: var(--font-source);
-  --ff-accent-style: italic;
-  --ff-accent-weight: 300;
-}
-html[data-font="inter"] {
-  --ff-body: var(--font-inter);
-  --ff-display: var(--font-inter-tight);
-  --ff-accent: var(--font-inter-tight);
-  --ff-accent-style: italic;
-  --ff-accent-weight: 300;
-}
-html[data-font="manrope"] {
-  --ff-body: var(--font-manrope);
-  --ff-display: var(--font-manrope);
-  --ff-accent: var(--font-manrope);
-  --ff-accent-weight: 200;
-}
-html[data-font="public"] {
-  --ff-body: var(--font-public);
-  --ff-display: var(--font-public);
-  --ff-accent: var(--font-public);
-  --ff-accent-style: italic;
-  --ff-accent-weight: 300;
 }

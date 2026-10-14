@@ -1,27 +1,16 @@
 import type { Metadata, Viewport } from "next"
-import { Geist, Instrument_Serif } from "next/font/google"
-import { FontSwitcher } from "@/components/theme/font-switcher"
-import { previewFontVars } from "@/lib/preview-fonts"
+import { Public_Sans } from "next/font/google"
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
-// Geist stands in for VisueltPro: body, labels and hairline display type.
-const geist = Geist({
-  variable: "--font-geist",
+// Public Sans is the only family: body, labels, display type and the italic
+// payoff word. latin-ext carries the rupee sign (U+20B9).
+const publicSans = Public_Sans({
+  variable: "--font-public",
   subsets: ["latin", "latin-ext"],
-  weight: ["200", "300", "400", "500"],
-  display: "swap",
-  preload: true,
-})
-
-// Instrument Serif italic stands in for Bradford: the one payoff word.
-// It has no rupee sign, which is fine: it never sets a price.
-const serif = Instrument_Serif({
-  variable: "--font-instrument",
-  subsets: ["latin"],
-  weight: "400",
-  style: "italic",
+  weight: ["300", "400", "500"],
+  style: ["normal", "italic"],
   display: "swap",
   preload: true,
 })
@@ -50,23 +39,16 @@ export const viewport: Viewport = {
   ],
 }
 
-// Preview font pairing, applied before paint so a saved choice never flashes.
-const fontScript = `try{var f=localStorage.getItem("sequel-font");if(f)document.documentElement.dataset.font=f}catch(e){}`
-
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-IN"
       suppressHydrationWarning
-      className={`${geist.variable} ${serif.variable} ${previewFontVars} h-full scroll-smooth antialiased`}
+      className={`${publicSans.variable} h-full scroll-smooth antialiased`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: fontScript }} />
-      </head>
       <body className="flex min-h-full flex-col bg-void">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
-          <FontSwitcher />
           <Toaster position="top-center" />
         </ThemeProvider>
       </body>
