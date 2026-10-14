@@ -1,20 +1,19 @@
 import type { Metadata } from "next"
-import { Archivo, Inter } from "next/font/google"
+import { Geist, Inter_Tight } from "next/font/google"
 import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
-// Inter for body copy and UI.
-const inter = Inter({
-  variable: "--font-inter",
+// Geist for body copy and UI.
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
 })
 
-// Archivo for headings and figures. Loaded as a variable font with the width
-// axis so headlines can run semi condensed (see the headline utility).
-const archivo = Archivo({
-  variable: "--font-archivo",
+// Inter Tight for monumental display headlines and figures.
+const display = Inter_Tight({
+  variable: "--font-display",
   subsets: ["latin"],
-  axes: ["wdth"],
+  weight: ["600", "700"],
 })
 
 const title = "Iron Warriors Gym | Memberships from ₹1,499/month"
@@ -37,11 +36,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en-IN"
-      className={`${inter.variable} ${archivo.variable} h-full scroll-smooth antialiased`}
+      className={`${geist.variable} ${display.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-white">
+      <body className="flex min-h-full flex-col bg-black">
         {children}
-        <Toaster theme="light" position="top-center" />
+        <Toaster theme="dark" position="top-center" />
       </body>
     </html>
   )

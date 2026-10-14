@@ -6,66 +6,65 @@
    bands are styled explicitly, not through a theme switch. */
 @custom-variant dark (&:is(.dark *));
 
-/* Iron Warriors design system. A disciplined, institutional look:
-   near-black bands (ink) alternate with cool off-white bands (bone). Depth
-   comes from surface tone steps (ink, ink-2, ink-3) and 1px hairlines, not
-   drop shadows. One deep crimson accent is reserved for primary actions and
-   small labels. All informational text pairs below meet WCAG AA:
-     graphite #3A3A3F on bone      10.2:1
-     pewter   #5A5A60 on bone       6.2:1
-     crimson  #B91C1C on white      6.5:1 (white on crimson is the same)
-     mist     #B8B8BD on ink-3      8.4:1
-     fog      #9A9AA1 on ink-3      5.9:1
-     ember    #E5484D on ink        5.0:1 (accent text on ink and ink-2 only) */
+/* Iron Warriors design system, v3 "Monument".
+   True near-black canvas (#000, #0b0b0b, #181818) with #333 hairlines and no
+   drop shadows. White type does the work; oversized Inter Tight headlines
+   carry the brand. One scarce accent, muted brass #C8A96A, is reserved for
+   the primary CTA and active states only. Contrast (WCAG AA):
+     paper    #F5F5F5 on #000     19.3:1
+     graphite #D4D4D4 on #000     14.0:1 (body copy)
+     mist     #C4C4C4 on #181818  10.0:1
+     pewter   #A3A3A3 on #181818   6.9:1
+     fog      #8F8F8F on #181818   5.2:1, on #000 6.3:1
+     black    #000 on brass        9.6:1 (primary CTA label) */
 
-/* Layout tokens that are not Tailwind theme namespaces. The spacing scale is
-   left to Tailwind so p-4, gap-4 and friends keep their usual values. */
 :root {
   --page-max-width: 1200px;
   --card-padding: 32px;
 
-  /* shadcn semantic tokens mapped onto the Iron Warriors palette */
-  --radius: 0.5rem;
-  --background: #ffffff;
-  --foreground: #0b0b0c;
-  --card: #ffffff;
-  --card-foreground: #0b0b0c;
-  --popover: #ffffff;
-  --popover-foreground: #0b0b0c;
-  --primary: #b91c1c;
-  --primary-foreground: #ffffff;
-  --secondary: #f1f4f4;
-  --secondary-foreground: #0b0b0c;
-  --muted: #f1f4f4;
-  --muted-foreground: #5a5a60;
-  --accent: #f1f4f4;
-  --accent-foreground: #0b0b0c;
-  --destructive: #b91c1c;
-  --border: #dfe3e3;
-  --input: #c4c9c9;
-  --ring: #b91c1c;
+  --radius: 0.75rem;
+  --background: #000000;
+  --foreground: #f5f5f5;
+  --card: #000000;
+  --card-foreground: #f5f5f5;
+  --popover: #0b0b0b;
+  --popover-foreground: #f5f5f5;
+  --primary: #c8a96a;
+  --primary-foreground: #000000;
+  --secondary: #181818;
+  --secondary-foreground: #f5f5f5;
+  --muted: #181818;
+  --muted-foreground: #a3a3a3;
+  --accent: #181818;
+  --accent-foreground: #f5f5f5;
+  --destructive: #f87171;
+  --border: #333333;
+  --input: #3d3d3d;
+  --ring: #f5f5f5;
 }
 
 @theme {
   /* Surfaces */
-  --color-ink: #0b0b0c;
-  --color-ink-2: #161617;
-  --color-ink-3: #1e1f20;
-  --color-bone: #f1f4f4;
-  --color-line: #dfe3e3;
-  --color-line-strong: #c4c9c9;
+  --color-ink: #000000;
+  --color-ink-2: #0b0b0b;
+  --color-ink-3: #181818;
+  --color-bone: #0b0b0b;
+  --color-line: #262626;
+  --color-line-strong: #3d3d3d;
   --color-line-dark: #333333;
 
   /* Text */
-  --color-graphite: #3a3a3f;
-  --color-pewter: #5a5a60;
-  --color-mist: #b8b8bd;
-  --color-fog: #9a9aa1;
+  --color-paper: #f5f5f5;
+  --color-graphite: #d4d4d4;
+  --color-pewter: #a3a3a3;
+  --color-mist: #c4c4c4;
+  --color-fog: #8f8f8f;
 
-  /* Accent: deep crimson, used sparingly */
-  --color-crimson: #b91c1c;
-  --color-crimson-deep: #991b1b;
-  --color-ember: #e5484d;
+  /* The single accent: muted brass. Token keeps its old name so the
+     component API is unchanged. */
+  --color-crimson: #c8a96a;
+  --color-crimson-deep: #b39352;
+  --color-ember: #c8a96a;
 
   /* Type scale */
   --text-caption: 12px;
@@ -75,35 +74,32 @@
   --text-body: 16px;
   --text-body--line-height: 26px;
   --text-subheading: 18px;
-  --text-subheading--line-height: 28px;
+  --text-subheading--line-height: 29px;
   --text-heading-sm: 20px;
   --text-heading-sm--line-height: 28px;
-  --text-heading: 24px;
+  --text-heading: 26px;
   --text-heading--line-height: 30px;
   --text-heading-lg: 48px;
   --text-heading-lg--line-height: 50px;
 
-  /* Radii: controls are pills, cards 12px, inputs 8px. */
   --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-xl: 12px;
-  --radius-2xl: 14px;
-  --radius-3xl: 16px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --radius-2xl: 20px;
+  --radius-3xl: 24px;
   --radius-full: 9999px;
 
-  /* Shadows: the page is flat. Only floating layers (dialog, toasts) get
-     a single soft shadow. */
-  --shadow-subtle: 0 1px 2px rgba(11, 11, 12, 0.04);
-  --shadow-float: 0 2px 8px rgba(11, 11, 12, 0.08), 0 24px 48px -24px rgba(11, 11, 12, 0.35);
+  /* Flat page. Floating layers get a hairline, not a glow. */
+  --shadow-subtle: none;
+  --shadow-float: 0 0 0 1px #333333;
 
-  /* Layout */
   --container-page: 1200px;
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-heading: var(--font-archivo), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font-archivo), var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-ring: var(--ring);
@@ -124,56 +120,50 @@
   --color-card: var(--card);
 }
 
-/* Display headings: Archivo, semi condensed, bold and tightly tracked so
-   large sizes read as one solid block. */
+/* Monumental display type: Inter Tight 700, tight tracking. */
 @utility headline {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-stretch: 88%;
-  letter-spacing: -0.03em;
-  line-height: 1;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
   text-wrap: balance;
 }
 
-/* Measured, positively tracked small caps for labels and tags. */
 @utility label-caps {
   font-size: 12px;
   line-height: 16px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-/* Small uppercase section label with a short crimson rule. On light bands
-   the label is crimson, on dark bands use eyebrow-dark. */
+/* Section label: quiet grey caps with a hairline rule. No accent here. */
 @utility eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 12px;
   font-size: 12px;
   line-height: 16px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-crimson);
+  color: var(--color-pewter);
   &::before {
     content: "";
-    width: 24px;
-    height: 2px;
+    width: 32px;
+    height: 1px;
     background: currentColor;
   }
 }
 
 @utility eyebrow-dark {
-  color: var(--color-ember);
+  color: var(--color-pewter);
 }
 
-/* Tabular, slightly tracked numerals for prices and stats. */
 @utility figure {
   font-family: var(--font-heading);
   font-weight: 700;
-  font-stretch: 88%;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   font-variant-numeric: tabular-nums;
 }
 
@@ -182,14 +172,20 @@
     @apply border-border outline-ring/50;
   }
   html {
-    @apply bg-ink font-sans text-ink;
-    font-feature-settings: "cv11" on, "ss01" on;
+    @apply bg-black font-sans text-paper;
   }
   body {
-    @apply bg-white text-body text-ink;
+    @apply bg-black text-body text-graphite;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible,
+  [role="switch"]:focus-visible {
+    outline: 2px solid #f5f5f5;
+    outline-offset: 3px;
   }
   ::selection {
-    background: var(--color-crimson);
-    color: #ffffff;
+    background: #c8a96a;
+    color: #000000;
   }
 }

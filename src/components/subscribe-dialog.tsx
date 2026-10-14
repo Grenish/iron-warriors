@@ -130,7 +130,7 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
           <div className="flex flex-col gap-5">
             <DialogHeader className="items-center text-center">
               <div className="flex size-14 items-center justify-center rounded-xl bg-ink text-white">
-                <CheckCircle2 className="size-7 text-ember" />
+                <CheckCircle2 className="size-7 text-paper" />
               </div>
               <DialogTitle>
                 Demo: subscription confirmed
@@ -142,28 +142,28 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
             </DialogHeader>
 
             {whatsapp ? (
-              <div className="rounded-lg border border-line bg-bone p-5">
-                <p className="flex items-start gap-2 text-body-sm font-semibold text-ink">
-                  <MessageCircle className="mt-0.5 size-4 shrink-0 text-crimson" />
+              <div className="rounded-lg border border-line bg-ink-3 p-5">
+                <p className="flex items-start gap-2 text-body-sm font-semibold text-paper">
+                  <MessageCircle className="mt-0.5 size-4 shrink-0 text-paper" />
                   A WhatsApp reminder would be sent to {formatPhone(phone)}
                 </p>
                 <ul className="mt-4 divide-y divide-line border-t border-line text-body-sm">
                   {schedule.map((reminder) => (
                     <li key={reminder.label} className="flex justify-between gap-4 py-2.5">
                       <span className="text-graphite">{reminder.label}</span>
-                      <span className="font-semibold whitespace-nowrap text-ink">{reminder.when}</span>
+                      <span className="font-semibold whitespace-nowrap text-paper">{reminder.when}</span>
                     </li>
                   ))}
                   {workoutNudges && (
                     <li className="flex justify-between gap-4 py-2.5">
                       <span className="text-graphite">Workout reminders</span>
-                      <span className="font-semibold whitespace-nowrap text-ink">Mon, Wed, Fri</span>
+                      <span className="font-semibold whitespace-nowrap text-paper">Mon, Wed, Fri</span>
                     </li>
                   )}
                 </ul>
               </div>
             ) : (
-              <p className="rounded-lg border border-line bg-bone p-5 text-body-sm text-graphite">
+              <p className="rounded-lg border border-line bg-ink-3 p-5 text-body-sm text-graphite">
                 WhatsApp reminders are turned off. You can switch them on any time at
                 the front desk.
               </p>
@@ -209,7 +209,7 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
               <div className="grid gap-2">
                 <Label htmlFor="member-phone">WhatsApp number</Label>
                 <div className="flex">
-                  <span className="inline-flex h-11 items-center rounded-l-lg border border-r-0 border-input bg-bone px-4 text-body font-medium text-graphite">
+                  <span className="inline-flex h-11 items-center rounded-l-lg border border-r-0 border-input bg-ink-3 px-4 text-body font-medium text-graphite">
                     +91
                   </span>
                   <Input
@@ -229,11 +229,11 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
               </div>
             </div>
 
-            <div className="grid gap-4 rounded-lg border border-line bg-bone p-5">
+            <div className="grid gap-4 rounded-lg border border-line bg-ink-3 p-5">
               <div className="flex items-start justify-between gap-4">
                 <Label htmlFor="whatsapp-reminders" className="flex-col items-start gap-1">
                   <span className="flex items-center gap-2">
-                    <BellRing className="size-4 text-crimson" />
+                    <BellRing className="size-4 text-paper" />
                     WhatsApp reminders
                   </span>
                   <span className="text-body-sm font-normal text-graphite">
@@ -268,7 +268,7 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
             <div className="flex items-start justify-between gap-4 rounded-lg border border-line p-5">
               <Label htmlFor="pt-addon" className="flex-col items-start gap-1">
                 <span className="flex items-center gap-2">
-                  <Dumbbell className="size-4 text-crimson" />
+                  <Dumbbell className="size-4 text-paper" />
                   Add {personalTrainingAddOn.name}
                 </span>
                 <span className="text-body-sm font-normal text-graphite">
@@ -308,8 +308,8 @@ export function SubscribeDialog({ plan, open, onOpenChange }: SubscribeDialogPro
               </div>
               <Separator className="my-1" />
               <div className="flex items-baseline justify-between">
-                <span className="font-semibold text-ink">Total</span>
-                <span className="figure text-[28px] leading-none text-ink">
+                <span className="font-semibold text-paper">Total</span>
+                <span className="figure text-[28px] leading-none text-paper">
                   {formatINR(total)}
                   <span className="ml-1.5 font-sans text-body-sm font-normal tracking-normal text-pewter">
                     incl. GST

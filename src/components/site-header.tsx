@@ -18,17 +18,17 @@ function subscribe(onChange: () => void) {
   return () => window.removeEventListener("scroll", onChange)
 }
 
-// Brand mark: a solid crimson square with the initials, set in the heading face.
+// Brand mark: a hairline ring with the initials, set in the heading face.
 export function BrandMark({ className }: { className?: string }) {
   return (
     <span className={cn("flex items-center gap-3", className)}>
       <span
         aria-hidden
-        className="flex size-8 items-center justify-center rounded-sm bg-crimson font-heading text-[13px] font-extrabold tracking-wide text-white"
+        className="flex size-8 items-center justify-center rounded-full border border-white/40 font-heading text-[12px] font-bold tracking-wide text-white"
       >
         IW
       </span>
-      <span className="headline text-heading-sm tracking-[0.01em] uppercase">Iron Warriors</span>
+      <span className="font-heading text-[15px] font-semibold tracking-[0.18em] uppercase">Iron Warriors</span>
     </span>
   )
 }
@@ -46,7 +46,7 @@ export function SiteHeader() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full border-b border-line-dark text-white transition-colors duration-200",
-        scrolled ? "bg-ink-2/90 backdrop-blur-md" : "bg-ink-2"
+        scrolled ? "bg-black/85 backdrop-blur-md" : "bg-black"
       )}
     >
       <div className="mx-auto flex h-16 w-full max-w-page items-center justify-between gap-6 px-4 sm:px-6">

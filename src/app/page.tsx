@@ -116,7 +116,7 @@ const faqs = [
   },
 ]
 
-// Weekly training split shown under the hero gauge. The crimson arc on the
+// Weekly training split shown under the hero gauge. The white arc on the
 // gauge is the current month's streak.
 const disciplines = [
   { label: "Strength", days: "Mon · Thu" },
@@ -146,8 +146,8 @@ function SectionIntro({
         <h2
           id={id}
           className={cn(
-            "headline mt-6 text-[40px] sm:text-[52px] lg:text-[60px]",
-            dark ? "text-white" : "text-ink"
+            "headline mt-6 text-[44px] sm:text-[64px] lg:text-[80px]",
+            dark ? "text-white" : "text-paper"
           )}
         >
           {title}
@@ -167,7 +167,7 @@ function SectionIntro({
 
 function IconTile({ icon: Icon }: { icon: LucideIcon }) {
   return (
-    <span className="flex size-11 shrink-0 items-center justify-center rounded-full border border-line-strong text-ink">
+    <span className="flex size-11 shrink-0 items-center justify-center rounded-full border border-line-strong text-paper">
       <Icon className="size-[18px]" strokeWidth={1.75} />
     </span>
   )
@@ -190,24 +190,24 @@ function FeatureText({
         <IconTile icon={icon} />
         <span className="label-caps text-pewter">{index}</span>
       </div>
-      <h3 className="headline text-[26px] text-ink">{title}</h3>
+      <h3 className="headline text-[26px] text-paper">{title}</h3>
       <p className="text-body text-graphite">{text}</p>
     </div>
   )
 }
 
-const cardBase = "rounded-xl border border-line bg-white p-6 sm:p-8"
-const panel = "rounded-lg border border-line bg-bone"
+const cardBase = "rounded-2xl border border-line-dark bg-black p-6 sm:p-10"
+const panel = "rounded-xl border border-line-dark bg-ink-2"
 
 export default function Home() {
   return (
-    <div className="flex min-h-full flex-col bg-white">
+    <div className="flex min-h-full flex-col bg-black">
       <SiteHeader />
 
       <main className="flex-1">
         {/* Hero: full bleed ink band. Two column split, headline left and a
             schematic membership panel right, then a stat strip. */}
-        <section className="bg-ink text-white">
+        <section className="bg-black text-white">
           <div className="mx-auto max-w-page px-4 pt-14 pb-16 sm:px-6 sm:pt-20 lg:pt-24">
             <div className="grid gap-14 lg:grid-cols-12 lg:items-center lg:gap-10">
               <div className="lg:col-span-7">
@@ -215,14 +215,14 @@ export default function Home() {
                   href="#reminders"
                   className="inline-flex min-h-10 items-center gap-3 rounded-full border border-line-dark py-1.5 pr-4 pl-1.5 text-body-sm text-mist transition-colors hover:border-fog hover:text-white"
                 >
-                  <span className="rounded-full bg-crimson px-2.5 py-1 text-[11px] font-semibold tracking-[0.12em] text-white uppercase">
+                  <span className="rounded-full border border-white/40 px-2.5 py-1 text-[11px] font-semibold tracking-[0.12em] text-white uppercase">
                     New
                   </span>
                   WhatsApp reminders on every membership
                   <ArrowRight className="size-3.5" />
                 </a>
 
-                <h1 className="headline mt-8 text-[52px] sm:text-[72px] lg:text-[84px]">
+                <h1 className="headline mt-10 text-[56px] sm:text-[88px] lg:text-[120px]">
                   Iron Warriors.
                   <span className="block text-fog">Train with discipline.</span>
                 </h1>
@@ -249,7 +249,7 @@ export default function Home() {
                   {["2,500+ members in Koramangala", "Free joining fee this month", "Cancel anytime"].map(
                     (item) => (
                       <li key={item} className="flex items-center gap-2.5">
-                        <span aria-hidden className="size-1.5 rounded-full bg-ember" />
+                        <span aria-hidden className="size-1.5 rounded-full bg-fog" />
                         {item}
                       </li>
                     )
@@ -284,7 +284,7 @@ export default function Home() {
                           strokeLinecap="round"
                           strokeDasharray="253 1000"
                           transform="rotate(180 160 190)"
-                          className="stroke-crimson"
+                          className="stroke-white"
                         />
                       </g>
                       <line x1="0" y1="190" x2="320" y2="190" className="stroke-line-dark" />
@@ -300,7 +300,7 @@ export default function Home() {
                     <ul className="grid grid-cols-2 gap-x-4 gap-y-4 py-5 sm:grid-cols-4">
                       <li>
                         <span className="flex items-center gap-2 text-[11px] font-semibold tracking-[0.12em] text-white uppercase">
-                          <span aria-hidden className="h-0.5 w-3 bg-crimson" />
+                          <span aria-hidden className="h-0.5 w-3 bg-white" />
                           Streak
                         </span>
                         <span className="mt-1 block text-caption text-fog">21 days</span>
@@ -324,7 +324,7 @@ export default function Home() {
                         <p className="headline mt-2 text-heading text-white">Annual plan</p>
                       </div>
                       <span className="inline-flex items-center gap-2 rounded-full border border-line-dark px-3 py-1 text-caption font-semibold text-white">
-                        <span aria-hidden className="size-1.5 rounded-full bg-ember" />
+                        <span aria-hidden className="size-1.5 rounded-full bg-fog" />
                         Active
                       </span>
                     </div>
@@ -366,8 +366,8 @@ export default function Home() {
         </section>
 
         {/* Features: bone band, white hairline cards in an alternating grid. */}
-        <section id="features" className="scroll-mt-16 bg-bone">
-          <div className="mx-auto max-w-page px-4 py-24 sm:px-6 lg:py-28">
+        <section id="features" className="scroll-mt-16 border-t border-line-dark bg-black">
+          <div className="mx-auto max-w-page px-4 py-20 sm:px-6 lg:py-32">
             <SectionIntro
               eyebrow="Why Iron Warriors"
               title="Built for real results"
@@ -389,19 +389,19 @@ export default function Home() {
                         className={cn(
                           "flex size-8 items-center justify-center rounded-full border text-caption font-semibold",
                           i === 2
-                            ? "border-ink bg-ink text-white"
-                            : "border-line-strong bg-white text-graphite"
+                            ? "border-paper bg-ink text-white"
+                            : "border-line-strong bg-ink-2 text-graphite"
                         )}
                       >
                         {day}
                       </span>
                     ))}
                   </div>
-                  <ul className="divide-y divide-line rounded-md border border-line bg-white">
+                  <ul className="divide-y divide-line rounded-md border border-line bg-ink-2">
                     {classes.map(([time, name, place]) => (
                       <li key={name} className="flex items-center justify-between px-3 py-2.5">
                         <span>
-                          <span className="block text-body-sm font-semibold text-ink">{name}</span>
+                          <span className="block text-body-sm font-semibold text-paper">{name}</span>
                           <span className="block text-caption text-pewter">{place}</span>
                         </span>
                         <span className="text-body-sm font-medium text-graphite tabular-nums">
@@ -432,7 +432,7 @@ export default function Home() {
               <div className={cn(cardBase, "grid gap-8 sm:grid-cols-2 lg:col-span-3")}>
                 <div className={cn(panel, "order-last p-4 sm:order-first")}>
                   <p className="label-caps text-pewter">This month</p>
-                  <div className="mt-3 divide-y divide-line rounded-md border border-line bg-white">
+                  <div className="mt-3 divide-y divide-line rounded-md border border-line bg-ink-2">
                     {[
                       { label: "Body fat", value: "18.2%", delta: "-1.4%", icon: TrendingDown, bar: "w-[45%]" },
                       { label: "Muscle mass", value: "34.1 kg", delta: "+0.8 kg", icon: TrendingUp, bar: "w-[72%]" },
@@ -441,7 +441,7 @@ export default function Home() {
                       <div key={label} className="p-3">
                         <div className="flex items-center justify-between text-body-sm">
                           <span className="text-graphite">{label}</span>
-                          <span className="flex items-center gap-1.5 font-semibold text-ink tabular-nums">
+                          <span className="flex items-center gap-1.5 font-semibold text-paper tabular-nums">
                             {value}
                             <span className="flex items-center gap-0.5 text-caption font-medium text-pewter">
                               <Icon className="size-3" /> {delta}
@@ -449,7 +449,7 @@ export default function Home() {
                           </span>
                         </div>
                         <div className="mt-2 h-1 rounded-full bg-line">
-                          <div className={cn("h-full rounded-full bg-crimson", bar)} />
+                          <div className={cn("h-full rounded-full bg-mist", bar)} />
                         </div>
                       </div>
                     ))}
@@ -471,7 +471,7 @@ export default function Home() {
                   text="5 AM to 11 PM on weekdays, 6 AM to 9 PM on weekends. Train before work or after dinner."
                 />
                 <div className={cn(panel, "p-4")}>
-                  <ul className="divide-y divide-line rounded-md border border-line bg-white text-body-sm">
+                  <ul className="divide-y divide-line rounded-md border border-line bg-ink-2 text-body-sm">
                     {[
                       ["Monday to Friday", "5 AM to 11 PM"],
                       ["Saturday", "6 AM to 9 PM"],
@@ -479,7 +479,7 @@ export default function Home() {
                     ].map(([day, hours]) => (
                       <li key={day} className="flex items-center justify-between px-3 py-3">
                         <span className="text-graphite">{day}</span>
-                        <span className="font-semibold text-ink">{hours}</span>
+                        <span className="font-semibold text-paper">{hours}</span>
                       </li>
                     ))}
                   </ul>
@@ -498,8 +498,8 @@ export default function Home() {
         </section>
 
         {/* Member stories: ink band, flat graphite cards, tag at the foot. */}
-        <section aria-labelledby="stories-title" className="bg-ink text-white">
-          <div className="mx-auto max-w-page px-4 py-24 sm:px-6 lg:py-28">
+        <section aria-labelledby="stories-title" className="border-t border-line-dark bg-ink-2 text-white">
+          <div className="mx-auto max-w-page px-4 py-20 sm:px-6 lg:py-32">
             <SectionIntro
               id="stories-title"
               dark
@@ -511,10 +511,10 @@ export default function Home() {
               {testimonials.map(({ quote, name, plan, area }) => (
                 <figure
                   key={name}
-                  className="flex flex-col justify-between gap-8 rounded-xl border border-line-dark bg-ink-3 p-6 sm:p-7"
+                  className="flex flex-col justify-between gap-8 rounded-2xl border border-line-dark bg-black p-6 sm:p-8"
                 >
                   <div>
-                    <span aria-hidden className="headline block text-[44px] leading-none text-crimson">
+                    <span aria-hidden className="headline block text-[44px] leading-none text-fog">
                       &ldquo;
                     </span>
                     <blockquote className="mt-2 text-body text-white">
@@ -534,8 +534,8 @@ export default function Home() {
         </section>
 
         {/* WhatsApp reminders: white band. Numbered steps left, chat right. */}
-        <section id="reminders" className="scroll-mt-16 bg-white">
-          <div className="mx-auto max-w-page px-4 py-24 sm:px-6 lg:py-28">
+        <section id="reminders" className="scroll-mt-16 border-t border-line-dark bg-black">
+          <div className="mx-auto max-w-page px-4 py-20 sm:px-6 lg:py-32">
             <SectionIntro
               eyebrow="Auto WhatsApp reminders"
               title="Your membership, on autopilot"
@@ -550,7 +550,7 @@ export default function Home() {
                     </span>
                     <IconTile icon={icon} />
                     <div>
-                      <p className="headline text-heading text-ink">
+                      <p className="headline text-heading text-paper">
                         <span className="sr-only">Step {index + 1}: </span>
                         {title}
                       </p>
@@ -563,12 +563,12 @@ export default function Home() {
               {/* Mock WhatsApp chat preview (static illustration, not a real chat) */}
               <div className="lg:col-span-5">
                 <div className={cn(panel, "mx-auto max-w-md rounded-xl p-4")}>
-                  <div className="flex items-center gap-3 rounded-lg border border-line bg-white p-3">
-                    <span className="flex size-10 items-center justify-center rounded-full bg-ink font-heading text-[12px] font-bold text-white">
+                  <div className="flex items-center gap-3 rounded-lg border border-line bg-ink-2 p-3">
+                    <span className="flex size-10 items-center justify-center rounded-full border border-white/40 font-heading text-[12px] font-bold text-white">
                       IW
                     </span>
                     <div>
-                      <p className="text-body-sm font-semibold text-ink">Iron Warriors</p>
+                      <p className="text-body-sm font-semibold text-paper">Iron Warriors</p>
                       <p className="text-caption text-pewter">Business account</p>
                     </div>
                   </div>
@@ -576,7 +576,7 @@ export default function Home() {
                     {chat.map(([message, time]) => (
                       <div
                         key={time}
-                        className="max-w-[88%] rounded-lg rounded-tl-sm border border-line bg-white px-4 py-3"
+                        className="max-w-[88%] rounded-lg rounded-tl-sm border border-line bg-ink-2 px-4 py-3"
                       >
                         <p className="text-graphite">{message}</p>
                         <p className="mt-1 text-right text-caption text-pewter">{time}</p>
@@ -593,8 +593,8 @@ export default function Home() {
         </section>
 
         {/* Pricing: bone band. */}
-        <section id="pricing" className="scroll-mt-16 bg-bone">
-          <div className="mx-auto max-w-page px-4 py-24 sm:px-6 lg:py-28">
+        <section id="pricing" className="scroll-mt-16 border-t border-line-dark bg-black">
+          <div className="mx-auto max-w-page px-4 py-20 sm:px-6 lg:py-32">
             <SectionIntro
               eyebrow="Membership plans"
               title="Pick your plan"
@@ -609,11 +609,11 @@ export default function Home() {
         </section>
 
         {/* FAQ: white band, ruled list. Native details/summary, no library. */}
-        <section id="faq" className="scroll-mt-16 bg-white">
+        <section id="faq" className="scroll-mt-16 border-t border-line-dark bg-ink-2">
           <div className="mx-auto grid max-w-page gap-12 px-4 py-24 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:py-28">
             <div className="lg:col-span-4">
               <p className="eyebrow">FAQ</p>
-              <h2 className="headline mt-6 text-[40px] text-ink sm:text-[52px]">
+              <h2 className="headline mt-6 text-[44px] text-paper sm:text-[64px]">
                 Questions, answered
               </h2>
               <p className="mt-5 text-subheading text-graphite">
@@ -623,11 +623,11 @@ export default function Home() {
             <div className="divide-y divide-line border-y border-line lg:col-span-8">
               {faqs.map(({ q, a }, i) => (
                 <details key={q} open={i === 0} className="group">
-                  <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-5 text-subheading font-semibold text-ink outline-none focus-visible:ring-3 focus-visible:ring-ring/50 [&::-webkit-details-marker]:hidden">
+                  <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-5 text-subheading font-semibold text-paper outline-none focus-visible:ring-3 focus-visible:ring-ring/50 [&::-webkit-details-marker]:hidden">
                     {q}
                     <span
                       aria-hidden
-                      className="flex size-9 shrink-0 items-center justify-center rounded-full border border-line-strong transition-colors group-open:border-crimson group-open:bg-crimson group-open:text-white"
+                      className="flex size-9 shrink-0 items-center justify-center rounded-full border border-line-strong transition-colors group-open:border-white group-open:text-white"
                     >
                       <Plus className="size-4 transition-transform duration-200 group-open:rotate-45" />
                     </span>
@@ -640,11 +640,11 @@ export default function Home() {
         </section>
 
         {/* Closing CTA: ink band. */}
-        <section className="bg-ink text-white">
+        <section className="border-t border-line-dark bg-black text-white">
           <div className="mx-auto grid max-w-page gap-10 px-4 py-24 sm:px-6 lg:grid-cols-12 lg:items-end lg:py-28">
             <div className="lg:col-span-8">
               <p className="eyebrow eyebrow-dark">Start today</p>
-              <h2 className="headline mt-6 text-[48px] sm:text-[64px] lg:text-[76px]">
+              <h2 className="headline mt-6 text-[56px] sm:text-[88px] lg:text-[112px]">
                 Ready when you are.
               </h2>
               <p className="mt-6 max-w-xl text-subheading text-mist">

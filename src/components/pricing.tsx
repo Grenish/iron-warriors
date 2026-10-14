@@ -47,12 +47,9 @@ export function Pricing() {
               key={plan.id}
               className={cn(
                 "relative [--card-spacing:--spacing(7)]! sm:[--card-spacing:--spacing(7)]!",
-                featured && "border-ink bg-ink text-white xl:-my-3 xl:py-10"
+                featured && "border-white bg-ink-3 text-white xl:-my-3 xl:py-10"
               )}
             >
-              {featured && (
-                <span aria-hidden className="absolute inset-x-0 top-0 h-1 bg-crimson" />
-              )}
               <CardHeader>
                 <div className="flex min-h-7 flex-wrap items-center justify-between gap-2">
                   <CardTitle className={cn(featured && "text-white")}>{plan.name}</CardTitle>
@@ -65,7 +62,7 @@ export function Pricing() {
                   {plan.savings && (
                     <>
                       {" · "}
-                      <span className={cn("font-semibold", featured ? "text-ember" : "text-crimson")}>
+                      <span className={cn("font-semibold", featured ? "text-paper" : "text-paper")}>
                         {plan.savings}
                       </span>
                     </>
@@ -81,8 +78,8 @@ export function Pricing() {
                 >
                   <p
                     className={cn(
-                      "figure text-[44px] leading-none",
-                      featured ? "text-white" : "text-ink"
+                      "figure text-[48px] sm:text-[52px] leading-none",
+                      featured ? "text-white" : "text-paper"
                     )}
                   >
                     {formatINR(plan.price)}
@@ -106,7 +103,7 @@ export function Pricing() {
                       <Check
                         className={cn(
                           "mt-1 size-4 shrink-0",
-                          featured ? "text-ember" : "text-crimson"
+                          featured ? "text-paper" : "text-paper"
                         )}
                         strokeWidth={2.5}
                       />
@@ -139,17 +136,17 @@ export function Pricing() {
         })}
       </div>
 
-      <div className="mt-10 grid gap-6 rounded-xl border border-line bg-white p-6 sm:p-8 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-10">
+      <div className="mt-10 grid gap-6 rounded-xl border border-line bg-ink-2 p-6 sm:p-8 md:grid-cols-[auto_1fr_auto] md:items-center md:gap-10">
         <p className="eyebrow">Add-on</p>
         <div>
-          <p className="headline text-heading text-ink">{personalTrainingAddOn.name}</p>
+          <p className="headline text-heading text-paper">{personalTrainingAddOn.name}</p>
           <p className="mt-1 text-body text-graphite">
             {personalTrainingAddOn.description} Add it to any plan at checkout.
           </p>
         </div>
         <div className="md:text-right">
           <p className="text-caption font-semibold tracking-[0.12em] text-pewter uppercase">From</p>
-          <p className="figure mt-1 text-[32px] leading-none text-ink">
+          <p className="figure mt-1 text-[32px] leading-none text-paper">
             {formatINR(personalTrainingAddOn.pricePerMonth)}
             <span className="ml-1 font-sans text-body-sm font-medium tracking-normal text-pewter">
               /mo incl. GST
