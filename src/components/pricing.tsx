@@ -13,7 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { SubscribeDialog } from "@/components/subscribe-dialog"
+import dynamic from "next/dynamic"
 import { cn } from "@/lib/utils"
 import {
   formatINR,
@@ -22,6 +22,12 @@ import {
   whatsappReminderNote,
   type Plan,
 } from "@/lib/plans"
+
+// Checkout dialog code loads only in the browser, off the critical path.
+const SubscribeDialog = dynamic(
+  () => import("@/components/subscribe-dialog").then((m) => m.SubscribeDialog),
+  { ssr: false }
+)
 
 export function Pricing() {
   const [selected, setSelected] = useState<Plan | null>(null)

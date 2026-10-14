@@ -174,7 +174,7 @@ export function WhatsAppMock() {
                 Iron Warriors
                 <BadgeCheck className="size-4 fill-[#00a884] text-[#202c33]" strokeWidth={2.5} />
               </p>
-              <p className="truncate text-[12px] text-[#8696a0]">
+              <p className="truncate text-[12px] text-[#aebac1]">
                 {view.typing ? "typing..." : "Business account"}
               </p>
             </div>
@@ -187,14 +187,14 @@ export function WhatsAppMock() {
             className="flex min-h-0 flex-1 flex-col justify-end gap-1.5 overflow-hidden px-3 py-3"
             style={{ backgroundImage: doodle }}
           >
-            <span className="mb-1 self-center rounded-md bg-[#182229] px-2.5 py-1 text-[11px] text-[#8696a0]">
+            <span className="mb-1 self-center rounded-md bg-[#182229] px-2.5 py-1 text-[11px] text-[#aebac1]">
               Today
             </span>
             {messages.slice(0, view.shown).map((m, i) => (
               <Bubble key={i} time={m.time} tail={i === 0 || i === 3 || i === 2} animate={!reduced}>
                 <p className="px-2.5 pt-1.5 pb-1">
                   {m.text}
-                  <span className="float-right mt-1.5 ml-3 text-[10.5px] leading-none text-[#8696a0]">
+                  <span className="float-right mt-1.5 ml-3 text-[11px] leading-none text-[#aebac1]">
                     {m.time}
                   </span>
                 </p>

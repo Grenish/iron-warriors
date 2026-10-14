@@ -22,7 +22,7 @@ import {
 import { Pricing } from "@/components/pricing"
 import { BrandMark, SiteHeader } from "@/components/site-header"
 import { buttonVariants } from "@/components/ui/button"
-import { WhatsAppMock } from "@/components/whatsapp-mock"
+import { WhatsAppMockLazy as WhatsAppMock } from "@/components/whatsapp-mock-lazy"
 import { cn } from "@/lib/utils"
 
 const stats = [
@@ -560,7 +560,7 @@ export default function Home() {
               <ol className="divide-y divide-line border-y border-line lg:col-span-7">
                 {reminderSteps.map(({ icon, title, text }, index) => (
                   <li key={title} className="grid grid-cols-[auto_1fr] gap-6 py-8 sm:grid-cols-[80px_auto_1fr]">
-                    <span className="figure hidden text-[40px] leading-none text-line-strong sm:block">
+                    <span aria-hidden className="figure hidden text-[40px] leading-none text-[#666666] sm:block">
                       0{index + 1}
                     </span>
                     <IconTile icon={icon} />

@@ -14,7 +14,7 @@
      white    #FFFFFF on #000      21:1
      graphite #D4D4D4 on #000      14.0:1 (body)
      pewter   #999999 on #202020    5.9:1, on #000 7.4:1
-     fog      #8C8C8C on #202020    4.9:1, on #000 6.2:1
+     fog      #999999 on #202020    5.9:1, on #000 7.4:1
      black    #000 on lamp cream   19.6:1 */
 :root {
   --page-max-width: 1200px;
@@ -56,7 +56,7 @@
   --color-graphite: #d4d4d4;
   --color-pewter: #999999;
   --color-mist: #c4c4c4;
-  --color-fog: #8c8c8c;
+  --color-fog: #999999;
 
   /* The single accent: muted brass. Token keeps its old name so the
      component API is unchanged. */

@@ -7,6 +7,8 @@ import "./globals.css"
 const geist = Geist({
   variable: "--font-geist",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 })
 
 // Instrument Serif italic for the one accent word in each headline.
@@ -15,6 +17,8 @@ const serif = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
   style: "italic",
+  display: "swap",
+  preload: true,
 })
 
 const title = "Iron Warriors Gym | Memberships from ₹1,499/month"
