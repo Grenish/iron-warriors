@@ -22,6 +22,7 @@ import {
 import { Pricing } from "@/components/pricing"
 import { BrandMark, SiteHeader } from "@/components/site-header"
 import { buttonVariants } from "@/components/ui/button"
+import { WhatsAppMock } from "@/components/whatsapp-mock"
 import { cn } from "@/lib/utils"
 
 const stats = [
@@ -54,12 +55,6 @@ const reminderSteps = [
     title: "Never miss a renewal",
     text: "We message you 7 days and 1 day before your plan ends, plus optional workout reminders.",
   },
-]
-
-const chat = [
-  ["Payment received: ₹11,999 for your Annual plan. Welcome to Iron Warriors, Aarav.", "9:41 AM"],
-  ["Reminder: Leg day today at 6:30 PM. Your squat rack is waiting.", "4:00 PM"],
-  ["Your membership renews in 7 days. Reply RENEW to continue without a break.", "10:00 AM"],
 ]
 
 const testimonials = [
@@ -560,33 +555,8 @@ export default function Home() {
                 ))}
               </ol>
 
-              {/* Mock WhatsApp chat preview (static illustration, not a real chat) */}
               <div className="lg:col-span-5">
-                <div className={cn(panel, "mx-auto max-w-md rounded-xl p-4")}>
-                  <div className="flex items-center gap-3 rounded-lg border border-line bg-ink-2 p-3">
-                    <span className="flex size-10 items-center justify-center rounded-full border border-white/40 font-heading text-[12px] font-bold text-white">
-                      IW
-                    </span>
-                    <div>
-                      <p className="text-body-sm font-semibold text-paper">Iron Warriors</p>
-                      <p className="text-caption text-pewter">Business account</p>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-3 py-4 text-body-sm">
-                    {chat.map(([message, time]) => (
-                      <div
-                        key={time}
-                        className="max-w-[88%] rounded-lg rounded-tl-sm border border-line bg-ink-2 px-4 py-3"
-                      >
-                        <p className="text-graphite">{message}</p>
-                        <p className="mt-1 text-right text-caption text-pewter">{time}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <p className="text-center text-caption text-pewter">
-                    Preview only. This demo does not send WhatsApp messages.
-                  </p>
-                </div>
+                <WhatsAppMock />
               </div>
             </div>
           </div>
