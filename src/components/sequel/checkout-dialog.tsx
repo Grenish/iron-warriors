@@ -129,8 +129,8 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
         {step === "success" ? (
           <div className="flex flex-col gap-5">
             <DialogHeader className="items-center text-center">
-              <div className="glass flex size-14 items-center justify-center rounded-full text-ink">
-                <CheckCircle2 className="size-6" strokeWidth={1.5} />
+              <div className="flex size-12 items-center justify-center bg-ink text-paper">
+                <CheckCircle2 className="size-6" strokeWidth={1.75} />
               </div>
               <DialogTitle>
                 Demo: subscription confirmed
@@ -142,38 +142,38 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
             </DialogHeader>
 
             {whatsapp ? (
-              <div className="rounded-card bg-void p-5">
-                <p className="flex items-start gap-2 text-body font-medium text-ink">
+              <div className="border border-rule bg-panel p-5">
+                <p className="flex items-start gap-2 text-[15px] font-medium text-ink">
                   <MessageCircle className="mt-0.5 size-4 shrink-0 text-ink" />
                   A WhatsApp reminder would be sent to {formatPhone(phone)}
                 </p>
-                <ul className="mt-4 divide-y divide-graphite border-t border-graphite text-body">
+                <ul className="mt-4 divide-y divide-rule border-t border-rule text-[15px]">
                   {schedule.map((reminder) => (
                     <li key={reminder.label} className="flex justify-between gap-4 py-2.5">
-                      <span className="text-mute">{reminder.label}</span>
+                      <span className="text-muted">{reminder.label}</span>
                       <span className="font-medium whitespace-nowrap text-ink">{reminder.when}</span>
                     </li>
                   ))}
                   {workoutNudges && (
                     <li className="flex justify-between gap-4 py-2.5">
-                      <span className="text-mute">Workout reminders</span>
+                      <span className="text-muted">Workout reminders</span>
                       <span className="font-medium whitespace-nowrap text-ink">Mon, Wed, Fri</span>
                     </li>
                   )}
                 </ul>
               </div>
             ) : (
-              <p className="rounded-card bg-void p-5 text-body text-mute">
+              <p className="border border-rule bg-panel p-5 text-[15px] text-muted">
                 WhatsApp reminders are turned off. You can switch them on any time at
                 the front desk.
               </p>
             )}
 
-            <p className="text-center text-body text-smoke">
+            <p className="text-center text-[15px] text-muted">
               Demo only: no payment was charged and no WhatsApp message was sent.
             </p>
 
-            <Button size="lg" variant="ghost" onClick={() => onOpenChange(false)}>
+            <Button size="lg" variant="outline" onClick={() => onOpenChange(false)}>
               Done
             </Button>
           </div>
@@ -181,8 +181,8 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
           <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
             <DialogHeader>
               <div className="flex flex-wrap items-center gap-3 pr-8">
-                <p className="label text-smoke">Demo checkout</p>
-                {plan.popular && <Badge>Most Popular</Badge>}
+                <p className="eyebrow text-mutedd">Demo checkout</p>
+                {plan.popular && <Badge>Best value</Badge>}
               </div>
               <DialogTitle>
                 {plan.name} membership
@@ -203,13 +203,13 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
                   onChange={(e) => setName(e.target.value)}
                   aria-invalid={Boolean(errors.name)}
                 />
-                {errors.name && <p className="text-body text-destructive">{errors.name}</p>}
+                {errors.name && <p className="text-[15px] text-destructive">{errors.name}</p>}
               </div>
 
               <div className="grid gap-2">
                 <Label htmlFor="member-phone">WhatsApp number</Label>
                 <div className="flex">
-                  <span className="inline-flex h-12 items-center border-b border-graphite pr-3 text-body text-mute">
+                  <span className="inline-flex h-12 items-center rounded-l-[2px] border border-r-0 border-rule bg-panel px-3.5 text-[15px] text-mutedd">
                     +91
                   </span>
                   <Input
@@ -222,21 +222,21 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
                     value={phone}
                     onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
                     aria-invalid={Boolean(errors.phone)}
-                    
+                    className="rounded-l-none"
                   />
                 </div>
-                {errors.phone && <p className="text-body text-destructive">{errors.phone}</p>}
+                {errors.phone && <p className="text-[15px] text-destructive">{errors.phone}</p>}
               </div>
             </div>
 
-            <div className="grid gap-4 rounded-card bg-void p-5">
+            <div className="grid gap-4 border border-rule bg-panel p-5">
               <div className="flex items-start justify-between gap-4">
                 <Label htmlFor="whatsapp-reminders" className="flex-col items-start gap-1">
                   <span className="flex items-center gap-2">
                     <BellRing className="size-4 text-ink" />
                     WhatsApp reminders
                   </span>
-                  <span className="text-body font-normal text-mute">
+                  <span className="text-[15px] font-normal text-muted">
                     Payment confirmation, plus renewal reminders 7 days and 1 day before
                     your plan ends.
                   </span>
@@ -251,7 +251,7 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
                 <div className="flex items-start justify-between gap-4">
                   <Label htmlFor="workout-nudges" className="flex-col items-start gap-1">
                     <span>Workout reminders</span>
-                    <span className="text-body font-normal text-mute">
+                    <span className="text-[15px] font-normal text-muted">
                       A friendly nudge on your training days.
                     </span>
                   </Label>
@@ -265,13 +265,13 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
               )}
             </div>
 
-            <div className="flex items-start justify-between gap-4 rounded-card bg-void p-5">
+            <div className="flex items-start justify-between gap-4 border border-rule bg-panel p-5">
               <Label htmlFor="pt-addon" className="flex-col items-start gap-1">
                 <span className="flex items-center gap-2">
                   <Dumbbell className="size-4 text-ink" />
                   Add {personalTrainingAddOn.name}
                 </span>
-                <span className="text-body font-normal text-mute">
+                <span className="text-[15px] font-normal text-muted">
                   {formatINR(personalTrainingAddOn.pricePerMonth)}/mo.{" "}
                   {personalTrainingAddOn.description}
                 </span>
@@ -283,35 +283,35 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
               />
             </div>
 
-            <div className="grid gap-3 text-body">
-              <p className="label text-smoke">Order summary</p>
+            <div className="grid gap-3 text-[15px]">
+              <p className="eyebrow text-mutedd">Order summary</p>
               <div className="flex justify-between">
-                <span className="text-mute">
+                <span className="text-muted">
                   {plan.name} plan ({plan.duration})
                 </span>
                 <span>{formatINR(plan.price)}</span>
               </div>
               {addTraining && (
                 <div className="flex justify-between">
-                  <span className="text-mute">
+                  <span className="text-muted">
                     Personal Training ({plan.months} x {formatINR(personalTrainingAddOn.pricePerMonth)})
                   </span>
                   <span>{formatINR(trainingCost)}</span>
                 </div>
               )}
               <div className="flex justify-between">
-                <span className="text-mute">Joining fee</span>
+                <span className="text-muted">Joining fee</span>
                 <span>
-                  <span className="mr-2 text-smoke line-through">{formatINR(999)}</span>
+                  <span className="mr-2 text-muted line-through">{formatINR(999)}</span>
                   {formatINR(0)}
                 </span>
               </div>
               <Separator className="my-1" />
               <div className="flex items-baseline justify-between">
                 <span className="font-medium text-ink">Total</span>
-                <span className="display text-sub text-ink">
+                <span className="display text-[32px] text-ink tabular-nums">
                   {formatINR(total)}
-                  <span className="ml-1.5 text-body font-normal tracking-normal text-smoke">
+                  <span className="ml-1.5 font-sans text-[14px] font-normal tracking-normal normal-case text-mutedd">
                     incl. GST
                   </span>
                 </span>
@@ -333,7 +333,7 @@ export function CheckoutDialog({ plan, open, onOpenChange }: CheckoutDialogProps
                   <>Pay {formatINR(total)} (demo)</>
                 )}
               </Button>
-              <p className="flex items-center justify-center gap-1.5 text-center text-body text-smoke">
+              <p className="flex items-center justify-center gap-1.5 text-center text-[15px] text-muted">
                 <ShieldCheck className="size-3.5" />
                 Demo only. No real payment is taken and no WhatsApp message is sent.
               </p>

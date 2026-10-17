@@ -4,102 +4,78 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Iron Warriors, Sequel system. Slate Dusk palette: soft blue-grey
-   surfaces in both themes, one filled pill (deep slate on light, sand on
-   dark). Tokens below drive every surface. Contrast (WCAG AA) in the
-   commit message. */
+/* Iron Warriors. Paper and ink with one signal red, square corners, hairline
+   rules. Archivo (condensed via the wdth axis) for display type, Archivo for
+   text, IBM Plex Mono for labels and data.
+
+   Contrast (WCAG AA):
+   light  ink #121211 on paper #f3f2ee 17.4:1, muted #5f5d57 on paper 5.9:1,
+          white on signal #c8361d 5.3:1
+   dark   ink #ecebe6 on paper #0f0f0e 16.6:1, muted #9a978f on paper 6.6:1,
+          paper on signal #e8553a 5.3:1 */
 
 :root {
-  /* Light: Slate Dusk, soft blue-grey paper. */
-  --radius: 10px;
-  --void: #eef0f3;
-  --charcoal: #e3e7ec;
-  --graphite: #c8ced6;
-  --ink: #232830;
-  --smoke: #545d69;
-  --mute: #39404a;
-  --background: var(--void);
+  --radius: 2px;
+  --paper: #f3f2ee;
+  --panel: #e9e7e1;
+  --rule: #d3d0c8;
+  --ink: #121211;
+  --muted: #5f5d57;
+  --signal: #c8361d;
+  --signal-hover: #a92c17;
+  --signal-foreground: #ffffff;
+  --background: var(--paper);
   --foreground: var(--ink);
-  --card: var(--charcoal);
+  --card: var(--panel);
   --card-foreground: var(--ink);
-  --popover: var(--charcoal);
+  --popover: var(--paper);
   --popover-foreground: var(--ink);
-  --primary: #3d4a5c;
-  --primary-hover: #525e6e;
-  --primary-foreground: #eef0f3;
-  --secondary: var(--charcoal);
+  --primary: var(--signal);
+  --primary-foreground: var(--signal-foreground);
+  --secondary: var(--panel);
   --secondary-foreground: var(--ink);
-  --muted: var(--charcoal);
-  --muted-foreground: var(--smoke);
-  --accent: var(--charcoal);
+  --muted-foreground: var(--muted);
+  --accent: var(--panel);
   --accent-foreground: var(--ink);
   --destructive: #b42318;
-  --border: var(--graphite);
-  --input: var(--graphite);
-  --ring: #3d4a5c;
-  --glass-bg: rgba(35, 40, 48, 0.05);
-  --shadow-glass: 0 10px 30px 0 rgba(20, 26, 36, 0.06), inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
-  --shadow-lamp: 0 4px 20px 0 rgba(20, 26, 36, 0.12);
+  --border: var(--rule);
+  --input: var(--rule);
+  --ring: var(--ink);
   color-scheme: light;
 }
 
 .dark {
-  /* Dark: Slate Dusk, blue-grey with a sand pill. */
-  --void: #1f2329;
-  --charcoal: #282d35;
-  --graphite: #3a404a;
-  --ink: #e4e7eb;
-  --smoke: #9aa3ae;
-  --mute: #c3c8d0;
-  --primary: #c9b99a;
-  --primary-hover: #b5a78c;
-  --primary-foreground: #1f2329;
-  --destructive: #ff8a8a;
-  --ring: #c9b99a;
-  --glass-bg: rgba(200, 206, 214, 0.1);
-  --shadow-glass: 0 10px 30px 0 rgba(0, 0, 0, 0.35), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
-  --shadow-lamp: 0 4px 20px 0 rgba(0, 0, 0, 0.15), 0 8px 28px -12px rgba(201, 185, 154, 0.28);
+  --paper: #0f0f0e;
+  --panel: #181817;
+  --rule: #2c2b29;
+  --ink: #ecebe6;
+  --muted: #9a978f;
+  --signal: #e8553a;
+  --signal-hover: #f06a50;
+  --signal-foreground: #0f0f0e;
+  --destructive: #ff8a7a;
   color-scheme: dark;
 }
 
 @theme {
-  --color-cream: #f5f5f0;
   /* Fixed tones for text over photos, same in both themes. */
-  --color-photo: #141414;
-  --color-photo-mute: #d4d4d4;
+  --color-photo: #0b0b0a;
 
-  --text-label: 11px;
-  --text-label--line-height: 1.5;
-  --text-body: 16px;
-  --text-body--line-height: 1.5;
-  --text-body-lg: 20px;
-  --text-body-lg--line-height: 1.5;
-  --text-sub: 30px;
-  --text-sub--line-height: 1.2;
-  --text-heading: 54px;
-  --text-heading--line-height: 1.1;
-  --text-display: 128px;
-  --text-display--line-height: 1;
-
-  --radius-card: 10px;
-
-
-  --ease-film: cubic-bezier(0.625, 0.05, 0, 1);
-
-  --container-page: 1200px;
+  --container-page: 1280px;
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @theme inline {
-  --color-void: var(--void);
-  --color-charcoal: var(--charcoal);
-  --color-graphite: var(--graphite);
+  --color-paper: var(--paper);
+  --color-panel: var(--panel);
+  --color-rule: var(--rule);
   --color-ink: var(--ink);
-  --color-smoke: var(--smoke);
-  --color-mute: var(--mute);
-  --color-primary-hover: var(--primary-hover);
-  --shadow-lamp: var(--shadow-lamp);
-  --shadow-glass: var(--shadow-glass);
-  --font-sans: var(--font-public), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --color-muted: var(--muted);
+  --color-signal: var(--signal);
+  --color-signal-hover: var(--signal-hover);
+  --color-signal-foreground: var(--signal-foreground);
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-ring: var(--ring);
@@ -113,44 +89,25 @@
   --color-muted-foreground: var(--muted-foreground);
 }
 
-/* Section display heading: light sans, tight tracking. */
+/* Condensed heavy display type for headlines and big numbers. */
 @utility display {
-  font-weight: 300;
-  letter-spacing: -0.05em;
-  line-height: 1.02;
+  font-family: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
+  font-variation-settings: "wdth" 72;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 0.92;
   text-wrap: balance;
 }
 
-/* The single payoff word inside a display line: Public Sans 300 italic. */
-@utility payoff {
-  font-style: italic;
-  font-weight: 300;
-  letter-spacing: -0.03em;
-}
-
-/* Uppercase tracked label for metadata, badges and captions. */
-@utility label {
-  font-size: 11px;
-  line-height: 1.5;
+/* Small uppercase mono label for section indexes, metadata and captions. */
+@utility eyebrow {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.4;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-/* Frosted glass badge with the inner top highlight. */
-@utility glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px) saturate(1.4);
-  box-shadow: var(--shadow-glass);
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-@utility marquee {
-  animation: marquee 45s linear infinite;
 }
 
 /* WhatsApp preview motion */
@@ -196,8 +153,7 @@
 @media (prefers-reduced-motion: reduce) {
   .wa-pop,
   .wa-dot,
-  .wa-fade-late,
-  .marquee {
+  .wa-fade-late {
     animation: none;
   }
 }
@@ -207,11 +163,10 @@
     @apply border-border;
   }
   html {
-    @apply bg-void font-sans text-ink;
-    font-feature-settings: "ss01" on, "cv11" on;
+    @apply bg-paper font-sans text-ink;
   }
   body {
-    @apply bg-void text-body text-ink;
+    @apply bg-paper text-base leading-relaxed text-ink;
   }
   a:focus-visible,
   button:focus-visible,
@@ -222,7 +177,7 @@
     outline-offset: 3px;
   }
   ::selection {
-    background: var(--primary);
-    color: var(--primary-foreground);
+    background: var(--ink);
+    color: var(--paper);
   }
 }

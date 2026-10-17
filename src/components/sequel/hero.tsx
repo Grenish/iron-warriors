@@ -1,57 +1,72 @@
-import { ArrowDown } from "lucide-react"
+import Image from "next/image"
 
 import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
 const facts = [
-  ["5 AM", "Doors open daily"],
-  ["₹1,499", "Monthly, incl. GST"],
-  ["2 reminders", "Before every renewal"],
+  ["Open", "5 AM to 11 PM"],
+  ["Membership from", "₹1,499 / month"],
+  ["Coaching", "Certified, on the floor"],
+  ["Renewals", "Reminders on WhatsApp"],
 ]
 
-// Typographic hero on the page background. The headline is the visual and
-// the largest paint; a hairline fact row and a round glass control anchor
-// the bottom so the space reads as composed, not empty.
+// Full-bleed photo hero. It always uses the dark tokens so the type stays
+// legible on the image in either theme.
 export function Hero() {
   return (
-    <section id="top" aria-labelledby="hero-title" className="relative flex min-h-[100svh] flex-col bg-void">
-      <div className="mx-auto flex w-full max-w-page flex-1 flex-col justify-end px-5 pt-32 pb-12 sm:px-8 sm:pb-16">
-        <p className="label text-smoke">Tezpur, Assam</p>
-        <h1
-          id="hero-title"
-          className="display mt-6 text-[60px] leading-[0.98] text-ink sm:text-[104px] lg:text-display"
-        >
-          Iron Warriors.
+    <section
+      id="top"
+      aria-labelledby="hero-title"
+      className="dark relative isolate flex min-h-[100svh] flex-col bg-photo text-ink"
+    >
+      <Image
+        src="/images/feature-3.webp"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="-z-10 object-cover object-[70%_center]"
+      />
+      <span
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-photo via-photo/80 to-photo/30"
+      />
+      <span aria-hidden className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-photo to-transparent" />
+
+      <div className="mx-auto flex w-full max-w-page flex-1 flex-col justify-end px-5 pt-32 sm:px-8">
+        <p className="eyebrow text-muted">Strength and conditioning, Tezpur, Assam</p>
+        <h1 id="hero-title" className="display mt-6 text-[72px] sm:text-[120px] lg:text-[168px]">
+          Strength is
           <br />
-          Train with <span className="payoff">discipline</span>.
+          earned here.
         </h1>
-        <div className="mt-10 flex flex-col gap-10 sm:mt-14 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-xl">
-            <p className="text-body-lg text-mute">
-              Serious equipment, certified coaches and WhatsApp reminders that keep you consistent.
-              Tezpur, Assam, from ₹1,499/month.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#plans" className={buttonVariants({ size: "lg" })}>
-                Join now
-              </a>
-              <a href="#plans" className={buttonVariants({ variant: "ghost", size: "lg" })}>
-                View plans from ₹1,499
-              </a>
-            </div>
+        <div className="mt-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <p className="max-w-lg text-[18px] leading-relaxed text-ink/80">
+            A proper training floor with Olympic platforms and power racks, certified coaches from
+            opening to close, and straightforward memberships with GST included.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <a href="#plans" className={buttonVariants({ size: "lg" })}>
+              See membership
+            </a>
+            <a href="#contact" className={buttonVariants({ variant: "outline", size: "lg" })}>
+              Visit the gym
+            </a>
           </div>
-          <a
-            href="#floor"
-            className="glass hidden size-32 shrink-0 flex-col items-center justify-center gap-2 rounded-full text-ink transition-colors duration-300 ease-film hover:bg-ink/10 lg:flex"
-          >
-            <ArrowDown className="size-4" strokeWidth={1.5} />
-            <span className="text-[13px] tracking-[0.03em] uppercase">See the gym</span>
-          </a>
         </div>
-        <dl className="mt-14 grid grid-cols-1 border-t border-graphite sm:mt-20 sm:grid-cols-3">
-          {facts.map(([value, label]) => (
-            <div key={label} className="flex items-baseline justify-between gap-4 border-b border-graphite py-5 sm:flex-col sm:items-start sm:border-b-0 sm:py-6 sm:pr-8">
-              <dt className="label text-smoke sm:mt-2">{label}</dt>
-              <dd className="display order-first text-[28px] leading-none text-ink sm:text-sub">{value}</dd>
+        <dl className="mt-16 grid grid-cols-2 border-t border-ink/25 lg:mt-20 lg:grid-cols-4">
+          {facts.map(([label, value], i) => (
+            <div
+              key={label}
+              className={cn(
+                "border-ink/25 py-5 sm:py-6",
+                i % 2 === 1 && "border-l pl-4",
+                i >= 2 && "border-t lg:border-t-0",
+                i > 0 && "lg:border-l lg:pl-6"
+              )}
+            >
+              <dt className="eyebrow text-muted">{label}</dt>
+              <dd className="mt-2 text-[17px] font-semibold sm:text-[19px]">{value}</dd>
             </div>
           ))}
         </dl>

@@ -6,7 +6,7 @@ import dynamic from "next/dynamic"
 function Placeholder() {
   return (
     <div className="mx-auto w-full max-w-[320px]">
-      <div aria-hidden className="aspect-[9/18.5] w-full rounded-[44px] bg-[#1a1a1a] ring-1 ring-graphite" />
+      <div aria-hidden className="aspect-[9/18.5] w-full rounded-[44px] bg-[#1a1a1a] ring-1 ring-rule" />
     </div>
   )
 }

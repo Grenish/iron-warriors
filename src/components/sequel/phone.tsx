@@ -168,7 +168,7 @@ export function Phone() {
     <div ref={ref} className="mx-auto w-full max-w-[320px]">
       <div
         aria-hidden
-        className="flex aspect-[9/18.5] w-full flex-col overflow-hidden rounded-[44px] bg-[#1a1a1a] p-[7px] ring-1 ring-graphite"
+        className="flex aspect-[9/18.5] w-full flex-col overflow-hidden rounded-[44px] bg-[#1a1a1a] p-[7px] ring-1 ring-rule"
       >
         <div className="flex h-full flex-col overflow-hidden rounded-[34px]">
           {/* Status bar */}

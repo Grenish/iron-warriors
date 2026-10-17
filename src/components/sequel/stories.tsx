@@ -1,35 +1,33 @@
-import { Badge } from "@/components/ui/badge"
-import { HeadingPair } from "./heading"
+import { SectionHeader } from "./heading"
 
 const testimonials = [
-  ["I lost 9 kg in five months without giving up home food. The diet plan is built around an Indian kitchen, which is why I could stick to it.", "Priya N.", "Annual member", "HSR Layout"],
-  ["I train at 5:30 AM before work and the floor is never crowded. The WhatsApp renewal reminders have kept my membership from lapsing twice.", "Rohan K.", "Half-Yearly member", "Tezpur"],
-  ["The coaches correct your form before you have to ask. My deadlift went from 80 kg to 140 kg in a year, with no injuries along the way.", "Sandeep M.", "Annual member", "BTM Layout"],
-  ["I joined for Zumba and stayed for the strength classes. Clean facilities, a professional front desk and no sales pressure at any point.", "Ananya R.", "Quarterly member", "Ejipura"],
+  ["I lost 9 kg in five months without giving up home food. The diet plan is built around an Indian kitchen, which is why I could stick to it.", "Priya N.", "Annual member since 2024"],
+  ["I train at 5:30 AM before work and the floor is never crowded. The WhatsApp renewal reminders have kept my membership from lapsing twice.", "Rohan K.", "Half-Yearly member since 2025"],
+  ["The coaches correct your form before you have to ask. My deadlift went from 80 kg to 140 kg in a year, with no injuries along the way.", "Sandeep M.", "Annual member since 2023"],
+  ["I joined for Zumba and stayed for the strength classes. Clean facilities, a professional front desk and no sales pressure at any point.", "Ananya R.", "Quarterly member since 2025"],
 ]
 
 export function Stories() {
   return (
-    <section aria-labelledby="stories-title" className="bg-void">
-      <div className="mx-auto max-w-page px-5 py-24 sm:px-8 lg:py-30">
-        <HeadingPair
+    <section aria-labelledby="stories-title" className="bg-panel">
+      <div className="mx-auto max-w-page px-5 py-24 sm:px-8 lg:py-32">
+        <SectionHeader
           id="stories-title"
-          lead="Rated 4.8★ on Google by the people who train here every week."
-          before="Trusted by people who "
-          payoff="show up"
-          after="."
+          index="04"
+          label="Members"
+          title="In their words"
+          intro="People who train here every week, on what keeps them coming back."
         />
-        <ul className="mt-16 grid gap-4 md:grid-cols-2 lg:mt-20">
-          {testimonials.map(([quote, name, plan, area]) => (
-            <li key={name} className="relative flex min-h-[360px] flex-col justify-between rounded-card bg-charcoal p-6 sm:p-8">
-              <Badge className="self-end">{plan}</Badge>
-              <figure className="mt-10">
-                <blockquote className="display text-[24px] leading-[1.3] tracking-[-0.025em] sm:text-sub">
+        <ul className="mt-14 grid gap-x-10 md:grid-cols-2 lg:mt-20">
+          {testimonials.map(([quote, name, detail]) => (
+            <li key={name} className="border-t border-rule py-8 sm:py-10">
+              <figure className="flex h-full flex-col justify-between gap-8">
+                <blockquote className="text-[21px] leading-[1.45] font-medium tracking-[-0.01em] sm:text-[24px]">
                   <p>&ldquo;{quote}&rdquo;</p>
                 </blockquote>
-                <figcaption className="mt-8 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span className="text-body font-medium">{name}</span>
-                  <span className="label text-smoke">{area}</span>
+                <figcaption className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+                  <span className="font-semibold">{name}</span>
+                  <span className="eyebrow text-muted">{detail}</span>
                 </figcaption>
               </figure>
             </li>

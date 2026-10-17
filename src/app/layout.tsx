@@ -1,23 +1,30 @@
 import type { Metadata, Viewport } from "next"
-import { Public_Sans } from "next/font/google"
+import { Archivo, IBM_Plex_Mono } from "next/font/google"
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
 
-// Public Sans is the only family: body, labels, display type and the italic
-// payoff word. latin-ext carries the rupee sign (U+20B9).
-const publicSans = Public_Sans({
-  variable: "--font-public",
+// Archivo carries text and, through its width axis, the condensed display
+// type. latin-ext carries the rupee sign (U+20B9).
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
+  axes: ["wdth"],
   display: "swap",
   preload: true,
 })
 
-const title = "Iron Warriors Gym | Memberships from ₹1,499/month"
+// Mono for labels, timings and table data.
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+})
+
+const title = "Iron Warriors Gym, Tezpur | Memberships from ₹1,499/month"
 const description =
-  "Join Iron Warriors with monthly, quarterly, half-yearly or annual plans. Pay online and get WhatsApp reminders before every renewal."
+  "Strength and conditioning gym in Tezpur, Assam. Monthly, quarterly, half-yearly and annual plans, GST included, with WhatsApp reminders before every renewal."
 
 export const metadata: Metadata = {
   title,
@@ -34,8 +41,8 @@ export const metadata: Metadata = {
 // Mobile browser bar follows the active scheme.
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#eef0f3" },
-    { media: "(prefers-color-scheme: dark)", color: "#1f2329" },
+    { media: "(prefers-color-scheme: light)", color: "#f3f2ee" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f0f0e" },
   ],
 }
 
@@ -44,9 +51,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en-IN"
       suppressHydrationWarning
-      className={`${publicSans.variable} h-full scroll-smooth antialiased`}
+      className={`${archivo.variable} ${plexMono.variable} h-full scroll-smooth antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-void">
+      <body className="flex min-h-full flex-col bg-paper">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
           <Toaster position="top-center" />
