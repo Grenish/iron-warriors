@@ -8,8 +8,9 @@ import { ThemeToggle } from "@/components/theme/theme-toggle"
 import { Wordmark } from "./mark"
 
 const links = [
+  ["The gym", "#floor"],
+  ["Renewals", "#reminders"],
   ["Membership", "#plans"],
-  ["Reminders", "#reminders"],
   ["Questions", "#faq"],
 ]
 
@@ -18,36 +19,36 @@ function subscribe(onChange: () => void) {
   return () => window.removeEventListener("scroll", onChange)
 }
 
-// Transparent over the hero, page background once you scroll. Logo left,
-// three links centre, primary pill right.
+// Over the dark hero the bar borrows the dark tokens so it reads light on the
+// photo; once scrolled it takes the page theme with a solid background.
 export function Nav() {
   const scrolled = useSyncExternalStore(subscribe, () => window.scrollY > 24, () => false)
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-300 ease-film",
-        scrolled ? "bg-void" : "bg-transparent"
+        "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200",
+        scrolled ? "border-rule bg-paper" : "dark border-transparent bg-transparent"
       )}
     >
-      <div className="mx-auto grid h-18 max-w-page grid-cols-[1fr_auto] items-center px-5 sm:px-8 md:grid-cols-[1fr_auto_1fr]">
+      <div className="mx-auto flex h-16 max-w-page items-center justify-between gap-6 px-5 sm:px-8">
         <a href="#top" className="flex min-h-11 items-center" aria-label="Iron Warriors, back to top">
           <Wordmark />
         </a>
-        <nav aria-label="Main" className="hidden items-center gap-4 md:flex">
+        <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
           {links.map(([label, href]) => (
             <a
               key={href}
               href={href}
-              className="inline-flex h-11 items-center px-2 text-[15px] font-medium text-ink/90 transition-opacity duration-300 hover:text-ink"
+              className="inline-flex h-11 items-center px-3 text-[14px] font-medium text-ink/80 transition-colors duration-200 hover:text-ink"
             >
               {label}
             </a>
           ))}
         </nav>
-        <div className="flex items-center justify-end gap-1 sm:gap-2">
+        <div className="flex items-center gap-2">
           <ThemeToggle />
           <a href="#plans" className={buttonVariants({ size: "sm" })}>
-            Join now
+            Join
           </a>
         </div>
       </div>

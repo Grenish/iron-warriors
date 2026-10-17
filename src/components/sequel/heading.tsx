@@ -1,32 +1,38 @@
 import { cn } from "@/lib/utils"
 
-// Sequel "section heading pair": a context line in hairline sans, then the
-// payoff line with one accent word.
-export function HeadingPair({
+// Section header: a ruled index line, then the title on the left and a short
+// intro on the right, aligned to the title's baseline on wide screens.
+export function SectionHeader({
   id,
-  lead,
-  before,
-  payoff,
-  after = "",
-  center = false,
+  index,
+  label,
+  title,
+  intro,
   className,
 }: {
   id?: string
-  lead: string
-  before: string
-  payoff: string
-  after?: string
-  center?: boolean
+  index: string
+  label: string
+  title: React.ReactNode
+  intro?: React.ReactNode
   className?: string
 }) {
   return (
-    <div className={cn("flex flex-col gap-6 sm:gap-8", center && "items-center text-center", className)}>
-      <p className="display max-w-3xl text-[28px] text-smoke sm:text-sub">{lead}</p>
-      <h2 id={id} className="display text-[48px] sm:text-[57px] lg:text-[80px]">
-        {before}
-        <span className="payoff">{payoff}</span>
-        {after}
-      </h2>
+    <div className={cn("border-t border-ink pt-5", className)}>
+      <p className="eyebrow flex gap-6 text-muted">
+        <span className="text-ink">{index}</span>
+        <span>{label}</span>
+      </p>
+      <div className="mt-10 grid gap-6 lg:mt-14 lg:grid-cols-12 lg:items-end lg:gap-10">
+        <h2 id={id} className="display text-[52px] sm:text-[72px] lg:col-span-7 lg:text-[96px]">
+          {title}
+        </h2>
+        {intro && (
+          <p className="max-w-md text-[17px] leading-relaxed text-muted lg:col-span-5 lg:justify-self-end">
+            {intro}
+          </p>
+        )}
+      </div>
     </div>
   )
 }

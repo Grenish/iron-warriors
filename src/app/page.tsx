@@ -9,14 +9,14 @@ import { Stories } from "@/components/sequel/stories"
 
 export default function Home() {
   return (
-    <div className="flex min-h-full flex-col bg-void">
+    <div className="flex min-h-full flex-col bg-paper">
       <Nav />
       <main className="flex-1">
         <Hero />
         <Floor />
+        <Plans />
         <Reminders />
         <Stories />
-        <Plans />
         <Faq />
       </main>
       <Closing />

@@ -14,7 +14,9 @@ A single-page landing site for a fictional Indian gym, Iron Warriors. Members ca
 
 ## Design
 
-The page follows the Sleeve design system: a light, monochrome look on a pure white canvas. Text is black (#000000), secondary text #333333 and muted text #999999. Surfaces are #ffffff and #f9fafb, separated only by white space and 1px #e5e7eb hairline borders. The single accent, blue #0e95ee, appears only on small uppercase eyebrow labels and on the hero showcase gradient. Buttons are solid black or hairline outlined, never colored. Tokens live in the `@theme` block of `src/app/globals.css`.
+Paper and ink with one signal colour. Surfaces are warm off-white (#f3f2ee, panels #e9e7e1) with near-black text (#121211), separated by 1px hairline rules (#d3d0c8). Dark mode flips to #0f0f0e with #ecebe6 text. The only colour is a signal red (#c8361d light, #e8553a dark), reserved for the primary button and savings labels. Corners are square (2px), with no shadows, blur or gradients outside the photo scrims.
+
+Type is Archivo throughout: condensed heavy uppercase (via the `wdth` axis) for headlines and prices, regular width for text. IBM Plex Mono carries small labels, section indexes and timings. Each section opens with a ruled index line (`01 The gym`), a title and a short intro. Tokens live in `src/app/globals.css`.
 
 ## Plans (INR, GST included)
 
@@ -34,7 +36,7 @@ Add-on: Personal Training at ₹4,999/mo.
 3. Keep **WhatsApp reminders** on (optionally add workout reminders or Personal Training).
 4. Click **Pay (demo)**. After a short simulated delay you see a confirmation with the reminder schedule: payment confirmation now, then renewal reminders 7 days and 1 day before the plan ends.
 
-Nothing is charged and nothing is sent. Plan data lives in `src/lib/plans.ts`, the checkout in `src/components/subscribe-dialog.tsx`.
+Nothing is charged and nothing is sent. Plan data lives in `src/lib/plans.ts`, the checkout in `src/components/sequel/checkout-dialog.tsx`.
 
 ## Run it
 
