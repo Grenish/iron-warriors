@@ -221,7 +221,7 @@ export function Phone() {
             </span>
             {messages.slice(0, view.shown).map((m, i) => (
               <Bubble key={i} time={m.time} tail={i === 0 || i === 3 || i === 2} animate={!reduced}>
-                <p className="px-2.5 pt-1.5 pb-1">
+                <p className="flow-root px-2.5 pt-1.5 pb-1">
                   {m.text}
                   <span className="float-right mt-1.5 ml-3 text-[11px] leading-none text-[#aebac1]">
                     {m.time}
