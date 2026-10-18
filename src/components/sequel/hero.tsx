@@ -4,8 +4,8 @@ import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 const facts = [
-  ["Open", "5 AM to 11 PM"],
-  ["Membership from", "₹1,499 / month"],
+  ["Hours", "6 to 11 AM, 4 to 10 PM"],
+  ["Membership from", "₹1,200 / month"],
   ["Coaching", "Certified, on the floor"],
   ["Renewals", "Reminders on WhatsApp"],
 ]
@@ -42,8 +42,8 @@ export function Hero() {
         </h1>
         <div className="mt-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <p className="max-w-lg text-[18px] leading-relaxed text-ink/80">
-            A proper training floor with Olympic platforms and power racks, certified coaches from
-            opening to close, and straightforward memberships with GST included.
+            A proper training floor with Olympic platforms and power racks, certified coaches in
+            every session, and straightforward memberships with GST included.
           </p>
           <div className="flex flex-wrap gap-3">
             <a href="#plans" className={buttonVariants({ size: "lg" })}>

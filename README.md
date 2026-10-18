@@ -22,10 +22,10 @@ Type is Archivo throughout: condensed heavy uppercase (via the `wdth` axis) for 
 
 | Plan        | Price    | Approx. per month | Extras                                  |
 | ----------- | -------- | ----------------- | --------------------------------------- |
-| Monthly     | ₹1,499   | ₹1,499            | Gym floor and locker                    |
-| Quarterly   | ₹3,999   | ₹1,333            | Plus one diet consult                   |
-| Half-Yearly | ₹6,999   | ₹1,167            | Plus monthly body composition check     |
-| Annual      | ₹11,999  | ₹1,000            | Plus 2 PT sessions and freeze option (Most Popular) |
+| Monthly     | ₹1,200   | ₹1,200            | Gym floor and locker                    |
+| Quarterly   | ₹2,999   | ₹1,000            | Plus one diet consult                   |
+| Half-Yearly | ₹4,999   | ₹833              | Plus monthly body composition check     |
+| Annual      | ₹8,999   | ₹750              | Plus 2 PT sessions and freeze option (Most Popular) |
 
 Add-on: Personal Training at ₹4,999/mo.
 

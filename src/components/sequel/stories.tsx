@@ -2,9 +2,9 @@ import { SectionHeader } from "./heading"
 
 const testimonials = [
   ["I lost 9 kg in five months without giving up home food. The diet plan is built around an Indian kitchen, which is why I could stick to it.", "Priya N.", "Annual member since 2024"],
-  ["I train at 5:30 AM before work and the floor is never crowded. The WhatsApp renewal reminders have kept my membership from lapsing twice.", "Rohan K.", "Half-Yearly member since 2025"],
+  ["I train at 6:30 AM before work and the floor is never crowded. The WhatsApp renewal reminders have kept my membership from lapsing twice.", "Rohan K.", "Half-Yearly member since 2025"],
   ["The coaches correct your form before you have to ask. My deadlift went from 80 kg to 140 kg in a year, with no injuries along the way.", "Sandeep M.", "Annual member since 2023"],
-  ["I joined for Zumba and stayed for the strength classes. Clean facilities, a professional front desk and no sales pressure at any point.", "Ananya R.", "Quarterly member since 2025"],
+  ["I came for cardio and stayed for strength training. Clean facilities, a professional front desk and no sales pressure at any point.", "Ananya R.", "Quarterly member since 2025"],
 ]
 
 export function Stories() {
