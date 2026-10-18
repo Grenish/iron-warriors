@@ -6,7 +6,6 @@ import { SectionHeader } from "./heading"
 const features = [
   ["Pro equipment", "Imported racks, plate-loaded machines, Olympic platforms and a 20 m turf for functional work."],
   ["Certified trainers", "ACE and K11 certified coaches on the floor through every session, ready to fix your form."],
-  ["Group classes", "HIIT, Zumba, yoga, kickboxing and CrossFit-style WODs, all included from the Quarterly plan."],
   ["Progress tracking", "Body composition checks so you see fat loss and muscle gain, not just a number on the scale."],
   ["Diet guidance", "Indian diet plans built around dal, roti and paneer, not imported superfoods you cannot find."],
   ["Two sessions", "Mornings from 6 AM to 11 AM, evenings from 4 PM to 10 PM. Train before work or after it."],
@@ -22,7 +21,7 @@ const photos = [
   {
     src: "/images/feature-1.webp",
     alt: "Dark studio with exercise mats and kettlebells, two figures moving in shadow",
-    caption: "Class studio",
+    caption: "Functional area",
     className: "lg:col-span-5",
   },
   {
@@ -32,8 +31,6 @@ const photos = [
     className: "lg:col-span-5",
   },
 ]
-
-const classes = ["Power Yoga", "Strength Basics", "HIIT", "Kickboxing", "Zumba", "CrossFit-style WODs"]
 
 export function Floor() {
   return (
@@ -67,7 +64,7 @@ export function Floor() {
           ))}
         </div>
 
-        <ol className="mt-16 grid gap-x-10 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
+        <ol className="mt-16 grid gap-x-10 border-b border-rule sm:grid-cols-2 lg:mt-20 lg:grid-cols-3">
           {features.map(([title, text], i) => (
             <li key={title} className="border-t border-rule py-7">
               <p className="eyebrow text-muted">{String(i + 1).padStart(2, "0")}</p>
@@ -76,15 +73,6 @@ export function Floor() {
             </li>
           ))}
         </ol>
-
-        <div className="flex flex-col gap-3 border-y border-rule py-6 sm:flex-row sm:items-baseline sm:gap-10">
-          <p className="eyebrow shrink-0 text-muted">Weekly classes</p>
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[15px] font-medium" aria-label="Weekly classes">
-            {classes.map((c) => (
-              <li key={c}>{c}</li>
-            ))}
-          </ul>
-        </div>
       </div>
     </section>
   )
