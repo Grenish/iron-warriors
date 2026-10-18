@@ -10,7 +10,7 @@ const faqs = [
   ["Do the prices include GST?", "Yes. Every price on this page includes 18% GST, so the amount you see is the amount you pay. Your GST invoice arrives on WhatsApp right after payment."],
   ["Can I freeze my Annual membership?", "Yes. Annual members can freeze their plan for up to 30 days in total for travel, illness or exams. Message us on WhatsApp or tell the front desk and we extend your end date."],
   ["How does checkout work on this site?", "This is a demo, so checkout is simulated: no money is charged and no WhatsApp message is sent. On the live site you would pay through a secure payment gateway with UPI, cards or netbanking, and the confirmation would arrive on WhatsApp within seconds."],
-  ["Where are you and when are you open?", "Main Road, Tezpur, Assam 784001. We are open 5 AM to 11 PM Monday to Friday, and 6 AM to 9 PM on Saturday and Sunday."],
+  ["Where are you and when are you open?", "Main Road, Tezpur, Assam 784001. We run two sessions: mornings from 6 AM to 11 AM and evenings from 4 PM to 10 PM."],
 ]
 
 export function Faq() {

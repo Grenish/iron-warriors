@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils"
 // WhatsApp business template with a "Renew now" button row.
 const messages = [
   {
-    text: "Payment received: ₹11,999 for your Annual plan. Welcome to Iron Warriors, Aarav.",
+    text: "Payment received: ₹8,999 for your Annual plan. Welcome to Iron Warriors, Aarav.",
     time: "9:41 AM",
   },
   { text: "Reminder: Leg day today at 6:30 PM. Your squat rack is waiting.", time: "4:00 PM" },
@@ -29,7 +29,7 @@ const messages = [
     button: "Renew now",
   },
   {
-    text: "Payment received: ₹11,999. Your Annual plan now runs till 13 Oct 2028.",
+    text: "Payment received: ₹8,999. Your Annual plan now runs till 13 Oct 2028.",
     time: "10:02 AM",
   },
 ]

@@ -2,8 +2,8 @@ import { buttonVariants } from "@/components/ui/button"
 import { Wordmark } from "./mark"
 
 const hours = [
-  ["Mon to Fri", "5:00 AM to 11:00 PM"],
-  ["Sat and Sun", "6:00 AM to 9:00 PM"],
+  ["Morning", "6:00 AM to 11:00 AM"],
+  ["Evening", "4:00 PM to 10:00 PM"],
 ]
 
 // A dark call-to-action band, then the footer with address, hours and contact.

@@ -22,7 +22,7 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 })
 
-const title = "Iron Warriors Gym, Tezpur | Memberships from ₹1,499/month"
+const title = "Iron Warriors Gym, Tezpur | Memberships from ₹1,200/month"
 const description =
   "Strength and conditioning gym in Tezpur, Assam. Monthly, quarterly, half-yearly and annual plans, GST included, with WhatsApp reminders before every renewal."
 

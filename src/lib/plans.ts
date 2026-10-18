@@ -21,8 +21,8 @@ export const plans: Plan[] = [
     name: "Monthly",
     duration: "1 month",
     months: 1,
-    price: 1499,
-    perMonth: 1499,
+    price: 1200,
+    perMonth: 1200,
     billingNote: "per month",
     features: ["Full gym floor access", "Personal locker and showers"],
   },
@@ -31,10 +31,10 @@ export const plans: Plan[] = [
     name: "Quarterly",
     duration: "3 months",
     months: 3,
-    price: 3999,
-    perMonth: 1333,
+    price: 2999,
+    perMonth: 1000,
     billingNote: "for 3 months",
-    savings: "Save 11%",
+    savings: "Save 17%",
     features: [
       "Full gym floor access",
       "Personal locker and showers",
@@ -46,10 +46,10 @@ export const plans: Plan[] = [
     name: "Half-Yearly",
     duration: "6 months",
     months: 6,
-    price: 6999,
-    perMonth: 1167,
+    price: 4999,
+    perMonth: 833,
     billingNote: "for 6 months",
-    savings: "Save 22%",
+    savings: "Save 31%",
     features: [
       "Full gym floor access",
       "Personal locker and showers",
@@ -62,10 +62,10 @@ export const plans: Plan[] = [
     name: "Annual",
     duration: "12 months",
     months: 12,
-    price: 11999,
-    perMonth: 1000,
+    price: 8999,
+    perMonth: 750,
     billingNote: "for 12 months",
-    savings: "Save 33%",
+    savings: "Save 38%",
     popular: true,
     features: [
       "Full gym floor access",
@@ -89,7 +89,7 @@ export const personalTrainingAddOn = {
 export const whatsappReminderNote =
   "Get WhatsApp reminders 7 days and 1 day before renewal, plus a payment confirmation."
 
-// Formats a number as Indian Rupees, e.g. 11999 -> "₹11,999".
+// Formats a number as Indian Rupees, e.g. 8999 -> "₹8,999".
 export function formatINR(amount: number): string {
   return new Intl.NumberFormat("en-IN", {
     style: "currency",

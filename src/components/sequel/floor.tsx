@@ -5,11 +5,11 @@ import { SectionHeader } from "./heading"
 
 const features = [
   ["Pro equipment", "Imported racks, plate-loaded machines, Olympic platforms and a 20 m turf for functional work."],
-  ["Certified trainers", "ACE and K11 certified coaches on the floor from 5 AM to 11 PM, ready to fix your form."],
+  ["Certified trainers", "ACE and K11 certified coaches on the floor through every session, ready to fix your form."],
   ["Group classes", "HIIT, Zumba, yoga, kickboxing and CrossFit-style WODs, all included from the Quarterly plan."],
   ["Progress tracking", "Body composition checks so you see fat loss and muscle gain, not just a number on the scale."],
   ["Diet guidance", "Indian diet plans built around dal, roti and paneer, not imported superfoods you cannot find."],
-  ["Open 7 days", "5 AM to 11 PM on weekdays, 6 AM to 9 PM on weekends. Train before work or after dinner."],
+  ["Two sessions", "Mornings from 6 AM to 11 AM, evenings from 4 PM to 10 PM. Train before work or after it."],
 ]
 
 const photos = [
@@ -28,7 +28,7 @@ const photos = [
   {
     src: "/images/feature-5.webp",
     alt: "Empty gym at night with city lights through floor-to-ceiling windows",
-    caption: "Open till 11 PM",
+    caption: "Open till 10 PM",
     className: "lg:col-span-5",
   },
 ]
