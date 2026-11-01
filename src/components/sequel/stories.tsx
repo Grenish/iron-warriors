@@ -16,7 +16,6 @@ export function Stories() {
           index="04"
           label="Members"
           title="In their words"
-          intro="People who train here every week, on what keeps them coming back."
         />
         <ul className="mt-14 grid gap-x-10 md:grid-cols-2 lg:mt-20">
           {testimonials.map(([quote, name, detail]) => (

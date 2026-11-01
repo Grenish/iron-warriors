@@ -17,7 +17,6 @@ export function Reminders() {
           index="03"
           label="Renewals"
           title="Never miss a renewal"
-          intro="Every membership includes automatic WhatsApp messages, from the first payment to every renewal."
         />
         <div className="mt-14 grid gap-12 lg:mt-20 lg:grid-cols-12 lg:gap-10">
           <ol className="lg:col-span-7">
