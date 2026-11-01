@@ -16,7 +16,7 @@ A single-page landing site for a fictional Indian gym, Iron Warriors. Members ca
 
 Paper and ink with one signal colour. Surfaces are warm off-white (#f3f2ee, panels #e9e7e1) with near-black text (#121211), separated by 1px hairline rules (#d3d0c8). Dark mode flips to #0f0f0e with #ecebe6 text. The only colour is a signal red (#c8361d light, #e8553a dark), reserved for the primary button and savings labels. Corners are square (2px), with no shadows, blur or gradients outside the photo scrims.
 
-Type is Archivo throughout: condensed heavy uppercase (via the `wdth` axis) for headlines and prices, regular width for text. IBM Plex Mono carries small labels, section indexes and timings. Each section opens with a ruled index line (`01 The gym`), a title and a short intro. Tokens live in `src/app/globals.css`.
+Type is Archivo throughout: condensed heavy uppercase (via the `wdth` axis) for headlines and prices, regular width for text. IBM Plex Mono carries small labels, section indexes and timings. Each section opens with a ruled index line (`01 The gym`) and a title. Tokens live in `src/app/globals.css`.
 
 ## Plans (INR, GST included)
 
@@ -24,7 +24,7 @@ Type is Archivo throughout: condensed heavy uppercase (via the `wdth` axis) for 
 | ----------- | -------- | ----------------- | --------------------------------------- |
 | Monthly     | ₹1,200   | ₹1,200            | Gym floor and locker                    |
 | Quarterly   | ₹2,999   | ₹1,000            | Plus one diet consult                   |
-| Half-Yearly | ₹4,999   | ₹833              | Plus monthly body composition check     |
+| Half-Yearly | ₹4,999   | ₹833              | Same as Quarterly                       |
 | Annual      | ₹8,999   | ₹750              | Plus 2 PT sessions and freeze option (Most Popular) |
 
 Add-on: Personal Training at ₹4,999/mo.

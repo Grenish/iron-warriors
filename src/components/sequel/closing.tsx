@@ -1,3 +1,5 @@
+import Image from "next/image"
+
 import { buttonVariants } from "@/components/ui/button"
 import { Wordmark } from "./mark"
 
@@ -13,8 +15,15 @@ export function Closing() {
       <div className="dark bg-paper text-ink">
         <div className="mx-auto flex max-w-page flex-col gap-10 px-5 py-24 sm:px-8 lg:flex-row lg:items-end lg:justify-between lg:py-32">
           <div>
-            <p className="eyebrow text-muted">No joining fee this month</p>
-            <h2 className="display mt-6 text-[64px] sm:text-[104px] lg:text-[136px]">
+            <Image
+              src="/images/logo.webp"
+              alt="Iron Warriors Gym logo"
+              width={800}
+              height={795}
+              sizes="160px"
+              className="mb-10 w-32 sm:w-40"
+            />
+            <h2 className="display text-[64px] sm:text-[104px] lg:text-[136px]">
               Start this
               <br />
               week.

@@ -47,7 +47,6 @@ export function Plans() {
           index="02"
           label="Membership"
           title="Plans and pricing"
-          intro="Prices in INR with 18% GST included. No joining fee this month, and WhatsApp reminders on every plan."
         />
 
         <ul className="mt-14 grid gap-px border border-rule bg-rule sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
@@ -127,7 +126,7 @@ export function Plans() {
         </div>
 
         <div className="mt-6 flex flex-col gap-2 text-[14px] text-muted sm:flex-row sm:justify-between sm:gap-8">
-          <p>{whatsappReminderNote}</p>
+          <p>All prices include 18% GST. {whatsappReminderNote}</p>
           <p>Demo site: checkout is simulated. No payment is processed and no message is sent.</p>
         </div>
       </div>

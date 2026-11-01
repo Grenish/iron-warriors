@@ -54,7 +54,6 @@ export const plans: Plan[] = [
       "Full gym floor access",
       "Personal locker and showers",
       "One diet consultation",
-      "Monthly body composition check",
     ],
   },
   {
@@ -71,7 +70,6 @@ export const plans: Plan[] = [
       "Full gym floor access",
       "Personal locker and showers",
       "One diet consultation",
-      "Monthly body composition check",
       "2 personal training sessions",
       "Membership freeze option",
     ],
@@ -82,7 +80,7 @@ export const plans: Plan[] = [
 export const personalTrainingAddOn = {
   name: "Personal Training",
   pricePerMonth: 4999,
-  description: "1:1 coaching with a certified trainer, billed monthly.",
+  description: "1:1 coaching with a trainer, billed monthly.",
 }
 
 // What every member gets on WhatsApp (mocked in this demo).

@@ -5,8 +5,6 @@ import { SectionHeader } from "./heading"
 
 const features = [
   ["Pro equipment", "Imported racks, plate-loaded machines, Olympic platforms and a 20 m turf for functional work."],
-  ["Certified trainers", "ACE and K11 certified coaches on the floor through every session, ready to fix your form."],
-  ["Progress tracking", "Body composition checks so you see fat loss and muscle gain, not just a number on the scale."],
   ["Diet guidance", "Indian diet plans built around dal, roti and paneer, not imported superfoods you cannot find."],
   ["Two sessions", "Mornings from 6 AM to 11 AM, evenings from 4 PM to 10 PM. Train before work or after it."],
 ]
@@ -41,7 +39,6 @@ export function Floor() {
           index="01"
           label="The gym"
           title="The floor"
-          intro="Everything you need to train properly, kept clean, kept in order and coached all day."
         />
 
         <div className="mt-14 grid gap-2 lg:mt-20 lg:h-[620px] lg:grid-cols-12 lg:grid-rows-2">
